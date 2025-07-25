@@ -30,7 +30,7 @@ const inputStyle = {
 function CustomInput({label, type="text"}: {label: string, type?:string}) {
 
   return (
-    <TextField sx={inputStyle} id="outlined-basic" label={label} variant="outlined" type={type} />
+    <TextField required sx={inputStyle} id={label} label={label} name={label} variant="outlined" type={type} />
   )
 }
 
