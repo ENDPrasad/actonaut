@@ -25,7 +25,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Features', 'How it works?', 'Contact'];
+const navItems = ['Features', 'How it works?', 'Contact Us'];
 
 export default function NavBar(props: Props) {
   const { window } = props;
@@ -38,7 +38,7 @@ export default function NavBar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Actonaut
+        <Link to={'#hero-section'}>Actonaut</Link>
       </Typography>
       <Divider />
       <List>
@@ -74,11 +74,12 @@ export default function NavBar(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: theme.palette.primary.main, fontWeight: '600' }}
           >
-            Actonaut
+                    <Link to={'#hero-section'}>Actonaut</Link>
+
           </Typography>
           <Box className='gap-4' sx={{ display: { xs: 'none', sm: 'flex' } }}>
             {navItems.map((item) => (
-              <Link to={`#${item.replaceAll(' ', '-')}`} key={item}>
+              <Link to={`#${item.replaceAll(' ', '-').replace('?', '').toLocaleLowerCase()}`} key={item}>
                 {item}
               </Link>
             ))}

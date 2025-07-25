@@ -5,9 +5,9 @@ import SubHeader from "./smallComponents/SubHeader"
 function HowItWorks() {
 
   return (
-     <div className='px-8 py-4'>
+     <div id="how-it-works" className='px-8 py-8'>
         <SubHeader text="How it works?"/>
-        <div className="">
+        <div className="mt-8">
             <Steps />
         </div>
     </div>

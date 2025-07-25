@@ -9,13 +9,13 @@ import './HeroSection.css'
 function HeroSection() {
 
   return (
-      <Box component="main" className='w-full hero-section' style={{height: 'calc(100dvh - 4rem)'}}>
+      <Box id='hero-section' component="main" className='w-full hero-section' style={{height: 'calc(100dvh - 10rem)'}}>
         <div className='h-full flex flex-col justify-center align-middle mx-12'>
           <div className='flex gap-3 justify-center align-middle'>
             <HeaderText text='Learn'/>
-            <Dot />
+            <Dot size='3' />
             <HeaderText text='Practice'/>
-            <Dot />
+            <Dot size='3'/>
             <HeaderText text='Automate'/>
         </div>
         <div className='px-6'>

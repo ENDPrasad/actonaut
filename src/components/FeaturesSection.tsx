@@ -11,7 +11,7 @@ function FeaturesSection() {
     const textColor = theme.palette.background.default
 
   return (
-    <div id="Features" className='px-8 py-4' style={{backgroundColor: mainColor, color: textColor}}>
+    <div id="features" className='px-8 py-16' style={{backgroundColor: mainColor, color: textColor}}>
         <SubHeader text="features"/>
         <div className="flex justify-around align-middle my-6 gap-3 pb-8">
             <Feature image={testFlask} altText="Practice real world scenarios image" description="Practice every possible real world scenario" />

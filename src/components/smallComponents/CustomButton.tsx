@@ -1,5 +1,6 @@
 import { Button } from "@mui/material"
 import theme from "../../../theme"
+import { PRIMARY_BG_COLOR } from "../../helper/contants"
 
 interface ICustomButton {
     title:string, 
@@ -11,7 +12,7 @@ function CustomButton({title, type}: ICustomButton) {
     const isContained = type === 'contained'
 
   return (
-    <Button variant={type} sx={{bgcolor: `${isContained && mainColor}`, borderRadius: '10000px', padding: '0.6rem 1.2rem', border: `2px solid ${mainColor}`, color:`${!isContained && mainColor}`, textTransform: 'none'}} >
+    <Button variant={type} sx={{bgcolor: `${isContained ? mainColor: PRIMARY_BG_COLOR}`, borderRadius: '10000px', padding: '0.6rem 1.2rem', border: `2px solid ${mainColor}`, color:`${!isContained && mainColor}`, textTransform: 'none'}} >
         {title}
     </Button>
   )
