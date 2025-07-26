@@ -1,10 +1,11 @@
 import { Link } from "react-router"
-import { PRIMARY_COLOR } from "../helper/contants"
+import { PRIMARY_COLOR, SECONDARY_BG_COLOR } from "../helper/contants"
+import { Box } from "@mui/material"
 
 function Footer() {
 
   return (
-    <div>
+    <Box component={'footer'} sx={{backgroundColor: SECONDARY_BG_COLOR}}>
         <div className="p-16 flex justify-between align-top">
             <div>Actonaut</div>
             <div className="flex gap-12">
@@ -22,7 +23,7 @@ function Footer() {
             </div>
         </div>
         <div className="h-2" style={{backgroundColor: PRIMARY_COLOR}}></div>
-    </div>
+    </Box>
   )
 }
 

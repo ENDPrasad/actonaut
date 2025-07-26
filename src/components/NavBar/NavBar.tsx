@@ -16,19 +16,11 @@ import theme from '../../../theme';
 import {HashLink as Link} from 'react-router-hash-link';
 import './NavBar.css'
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
 
 const drawerWidth = 240;
 const navItems = ['Features', 'How it works?', 'Contact Us'];
 
-export default function NavBar(props: Props) {
-  const { window } = props;
+export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -52,8 +44,6 @@ export default function NavBar(props: Props) {
       </List>
     </Box>
   );
-
-  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex', marginBottom: '4rem' }}>
@@ -88,7 +78,6 @@ export default function NavBar(props: Props) {
       </AppBar>
       <nav>
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}

@@ -22,8 +22,8 @@ function HeroSection() {
           <p className='text-center'>A complete platform to learn automation concepts, solve real-world problems, and follow industry best practices.</p>
         </div>
         <div className='flex gap-3 justify-center mt-6'>
-          <CustomButton type={'contained'} title='Start Exploring'/>
-          <CustomButton type={'outlined'} title='Challenges'/>
+          <CustomButton type={'contained'} title='Start Exploring' to='/explore'/>
+          <CustomButton type={'outlined'} title='Challenges' to='/challenges'/>
         </div>
         </div>
       </Box>

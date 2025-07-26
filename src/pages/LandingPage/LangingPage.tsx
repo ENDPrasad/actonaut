@@ -8,7 +8,6 @@ import NavBar from '../../components/NavBar/NavBar';
 function LandingPage() {
 
   return (
-    <>
       <div className=''>
         <NavBar />
         <HeroSection />
@@ -17,7 +16,6 @@ function LandingPage() {
         <ContactUs />
         <Footer />
         </div>
-    </>
   )
 }
 
