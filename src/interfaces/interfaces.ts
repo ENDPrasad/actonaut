@@ -7,7 +7,6 @@ export type AutomationTopic = {
   category: string;          // e.g., Element, Event, Input, Navigation
   tags?: string[];           // Optional: extra keywords for search/filter
 };
-
 import type React from "react"
 
 export interface BreadcrumbItem {
@@ -33,7 +32,6 @@ export interface ContentSection {
   content: React.ReactNode
 }
 
-// New interfaces for the additional sections
 export interface TestCase {
   id: string
   scenario: string
@@ -51,18 +49,58 @@ export interface SolutionCode {
   explanation: string
 }
 
-export interface PracticeEnvironment {
+// Updated Practice Scenario interfaces
+export interface PracticeScenario {
+  id: string
   title: string
   description: string
-  sampleSiteUrl?: string
-  interactiveElements: InteractiveElement[]
-  instructions: string[]
+  category: string
+  difficulty: "beginner" | "intermediate" | "advanced"
+  learningObjectives: string[]
+  siteContent: React.ReactNode
 }
 
 export interface InteractiveElement {
   id: string
-  type: "button" | "input" | "dropdown" | "checkbox" | "link" | "form"
+  type: "button" | "input" | "dropdown" | "checkbox" | "link" | "form" | "dragdrop" | "slider" | "modal"
   label: string
   selector: string
   description: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  props?: Record<string, any>
+}
+
+// Challenge system interfaces
+export interface Challenge {
+  id: string
+  title: string
+  description: string
+  difficulty: "easy" | "medium" | "hard" | "expert"
+  category: string
+  tags: string[]
+  estimatedTime: string
+  points: number
+  prerequisites?: string[]
+  scenario: React.ReactNode
+  objectives: string[]
+  hints?: string[]
+}
+
+export interface ChallengeFilters {
+  difficulty: string
+  category: string
+  search: string
+}
+
+export interface PracticeEnvironment {
+  title: string,
+  description:string,
+  instructions: string[],
+  interactiveElements: {
+        id: string,
+        type: string,
+        label: string,
+        selector: string,
+        description: string,
+      }[]
 }

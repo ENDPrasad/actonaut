@@ -39,7 +39,7 @@ export default function ConceptPage({ params }: ConceptPageProps) {
   const concept = conceptsData[params.slug as keyof typeof conceptsData]
 
   if (!concept) {
-    return <div>Concept not found</div>
+    return <div className="py-16">Concept not found</div>
   }
 
   const pageData = createConceptPageData(concept.name, concept.overview, concept.syntaxCode, concept.useCases)
