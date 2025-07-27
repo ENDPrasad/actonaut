@@ -8,7 +8,7 @@ function CustomCard({cardDetails}: {cardDetails:AutomationTopic}) {
 
   return (
     <Link to={path} key={id}>
-    <Card sx={{padding: '16px', minHeight: '18rem'}} className="flex flex-col gap-1">
+    <Card sx={{padding: '16px', minHeight: '18rem', backgroundImage: 'url("src/assets/background-design.svg")'}} className="flex flex-col gap-1">
       <div>
         <Chip label={category} sx={{backgroundColor: SECONDARY_DARK_COLOR, color: PRIMARY_TEXT_COLOR, padding: '2px 4px', fontWeight: '500', }}/>
       </div>

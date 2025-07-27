@@ -24,7 +24,7 @@ export function ConceptPage() {
     concept.name,
     concept.overview,
     concept.syntaxCode,
-    concept.useCases,
+    concept.useCases
   )
 
   return <ConceptPageLayout data={pageData} />

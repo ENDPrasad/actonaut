@@ -3,12 +3,12 @@ import { CodeBlock } from "../CodeBlock"
 import { BulletList } from "../BulletList"
 import { ContentSectionComponent } from "../ContentSection"
 import { Typography } from "@mui/material"
-import { PracticeEnvironmentComponent } from "../PracticeEnvironment"
 import { TestCasesTable } from "../TestCasesTable"
-import { SolutionCodeComponent } from "../SolutionCode"
-import { createButtonPracticeEnvironment, createFormPracticeEnvironment } from "./PracticeEnvironmentFactory"
-import { createButtonTestCases, createFormTestCases } from "./TestCasesFactory"
-import { createButtonSolutions, createFormSolutions } from "./SolutionCodeFactory"
+// import { SolutionCodeComponent } from "../SolutionCode"
+// import { createButtonSolutions, createFormSolutions } from "./SolutionCodeFactory"
+import { PracticeScenarioComponent } from "../PracticeScenario"
+import { getScenarioById } from "./ScenarioFactory"
+import { getTestCasesById } from "./TestCaseSelection"
 
 // Factory function to create concept page data
 export function createConceptPageData(
@@ -16,15 +16,26 @@ export function createConceptPageData(
   overview: string,
   syntaxCode: string,
   useCases: string[],
+  scenarioId?: string,
   additionalSections?: ContentSection[],
 ): ConceptPageData {
-  // Determine which practice environment, test cases, and solutions to use
-  const practiceEnvironment =
-    conceptName === "button" ? createButtonPracticeEnvironment() : createFormPracticeEnvironment()
+  // Get the appropriate scenario
+  const scenario = scenarioId ? getScenarioById(scenarioId) : getScenarioById(conceptName)
 
-  const testCases = conceptName === "button" ? createButtonTestCases() : createFormTestCases()
+  // Fallback scenarios if no specific scenario provided
+  const defaultScenarioId =
+    conceptName === "button"
+      ? "button-basic"
+      : conceptName === "input"
+        ? "input-basic"
+        : conceptName === "dragdrop"
+          ? "dragdrop-basic"
+          : null
 
-  const solutions = conceptName === "button" ? createButtonSolutions() : createFormSolutions()
+  const finalScenario = scenario || (defaultScenarioId ? getScenarioById(defaultScenarioId) : null)
+
+  const testCases = getTestCasesById(conceptName)
+//   const solutions = conceptName === "button" ? createButtonSolutions() : createFormSolutions()
 
   return {
     breadcrumbs: [{ label: "Categories", href: "/explore" }, { label: conceptName }],
@@ -42,13 +53,13 @@ export function createConceptPageData(
 
                     <ContentSectionComponent
                         section={{
-                            title: "Syntax",
+                            title: "HTML Syntax",
                             content: <CodeBlock code={syntaxCode} />,
                         }} />
 
                     <ContentSectionComponent
                         section={{
-                            title: "Where we will use that?",
+                            title: "Usecases",
                             content: <BulletList items={useCases} />,
                         }} />
 
@@ -61,18 +72,17 @@ export function createConceptPageData(
         {
             id: "try-it-yourself",
             label: "Try It Yourself",
-            content: <PracticeEnvironmentComponent environment={practiceEnvironment} />,
+            content: finalScenario ? (
+                <PracticeScenarioComponent scenario={finalScenario} />
+            ) : (
+                <Typography>No practice scenario available for this concept.</Typography>
+            ),
         },
         {
             id: "test-cases",
             label: "Test Cases",
-            content: <TestCasesTable testCases={testCases} />,
-        },
-        {
-            id: "solution",
-            label: "Solution",
-            content: <SolutionCodeComponent solutions={solutions} testCases={testCases} />,
-        },
+            content: <TestCasesTable testCases={testCases || []} />,
+        }
     ],
     activeTab: "concept",
     title: "",

@@ -100,17 +100,6 @@ const buttonConceptData: ConceptPageData = {
                 </div>
             ),
         },
-        {
-            id: "solution",
-            label: "Solution",
-            content: (
-                <div>
-                    <h3 className="text-lg font-semibold mb-4">Complete Solution</h3>
-                    <p className="text-gray-600">Detailed solutions and explanations...</p>
-                    {/* Add solution component here */}
-                </div>
-            ),
-        },
     ],
     activeTab: "concept",
     title: ""

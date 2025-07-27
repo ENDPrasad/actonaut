@@ -30,7 +30,7 @@ export default function NavBar() {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Link to={'#hero-section'}>Actonaut</Link>
+        <Link to={'/'}>Actonaut</Link>
       </Typography>
       <Divider />
       <List>
@@ -64,7 +64,7 @@ export default function NavBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: theme.palette.primary.main, fontWeight: '600' }}
           >
-                    <Link to={'#hero-section'}>Actonaut</Link>
+                    <Link to={'/'}>Actonaut</Link>
 
           </Typography>
           <Box className='gap-4' sx={{ display: { xs: 'none', sm: 'flex' } }}>

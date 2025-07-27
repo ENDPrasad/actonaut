@@ -20,6 +20,16 @@ export const automationTopics: AutomationTopic[] = [
     tags: ["form", "type", "validation"]
   },
   {
+  id: "form",
+  title: "Form",
+  aliases: ["Input Form", "User Form", "Submit", "Validation", "Text Fields"],
+  description: "Learn how to automate interactions with forms including input fields, validation, and form submission.",
+  path: "/explore/form",
+  category: "Element",
+  tags: ["input", "form", "validation", "submit", "automation"]
+}
+,
+  {
     id: "checkbox",
     title: "Checkbox",
     aliases: ["Tickbox", "Selection", "Options", "Check", "Multi-select"],
