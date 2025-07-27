@@ -489,6 +489,485 @@ export function createIFrameTestCases(): TestCase[] {
 
 }
 
+export function createModalWindowTestCases(): TestCase[] {
+  return [
+  {
+    id: "MODAL_001",
+    scenario: "Open modal on delete button click",
+    type: "positive",
+    description: "Verify that the modal window opens when the delete button is clicked",
+    expectedResult: "Modal should appear with confirmation message and buttons",
+    priority: "high",
+    steps: [
+      "Navigate to the page with the delete button",
+      "Click on the delete button",
+      "Verify that the modal appears with appropriate content"
+    ]
+  },
+  {
+    id: "MODAL_002",
+    scenario: "Close modal by clicking cancel",
+    type: "positive",
+    description: "Ensure modal closes without deleting the item when Cancel is clicked",
+    expectedResult: "Modal should close and no action should be taken",
+    priority: "high",
+    steps: [
+      "Click the delete button to open modal",
+      "Click the Cancel button in the modal",
+      "Verify that the modal closes and item remains visible"
+    ]
+  },
+  {
+    id: "MODAL_003",
+    scenario: "Confirm delete action from modal",
+    type: "positive",
+    description: "Verify that clicking Delete performs the action and closes the modal",
+    expectedResult: "Item should be deleted and modal should close",
+    priority: "high",
+    steps: [
+      "Click the delete button to open modal",
+      "Click the Delete button",
+      "Check that modal closes and item is removed from the view"
+    ]
+  },
+  {
+    id: "MODAL_004",
+    scenario: "Try to delete item without opening modal",
+    type: "negative",
+    description: "Ensure that no delete action can occur unless modal is opened and confirmed",
+    expectedResult: "Item should not be deleted without user confirmation through modal",
+    priority: "medium",
+    steps: [
+      "Load the page with the item",
+      "Do not click delete or modal buttons",
+      "Verify that item is still present"
+    ]
+  },
+  {
+    id: "MODAL_005",
+    scenario: "Press Escape key to close modal",
+    type: "positive",
+    description: "Verify that pressing the Escape key closes the modal",
+    expectedResult: "Modal should close without performing any action",
+    priority: "medium",
+    steps: [
+      "Click the delete button to open modal",
+      "Press the Escape key on the keyboard",
+      "Confirm that modal closes and item remains"
+    ]
+  },
+  {
+    id: "MODAL_006",
+    scenario: "Click outside modal to close it",
+    type: "positive",
+    description: "Verify that clicking outside the modal closes it without taking action",
+    expectedResult: "Modal should close and no changes should be made",
+    priority: "medium",
+    steps: [
+      "Click the delete button to open modal",
+      "Click anywhere outside the modal window",
+      "Ensure the modal disappears and item remains unchanged"
+    ]
+  },
+  {
+    id: "MODAL_007",
+    scenario: "Modal behavior on rapid open-close interaction",
+    type: "negative",
+    description: "Verify modal handles rapid open-close actions without glitches",
+    expectedResult: "Modal should function correctly without freezing or crashing",
+    priority: "low",
+    steps: [
+      "Click delete button multiple times rapidly",
+      "Click cancel or delete repeatedly",
+      "Ensure UI remains stable and modal behaves predictably"
+    ]
+  }
+]
+
+}
+
+export function createDragAndDropTestCases(): TestCase[] {
+  return [
+  {
+    id: "KANBAN_001",
+    scenario: "Drag a task from 'Not Started' to 'In Progress'",
+    type: "positive",
+    description: "Verify that a task can be moved from 'Not Started' to 'In Progress' using drag and drop",
+    expectedResult: "Task should appear in 'In Progress' column with status updated",
+    priority: "high",
+    steps: [
+      "Locate a task card under 'Not Started'",
+      "Click and drag the task card to the 'In Progress' column",
+      "Drop the task and verify it moves to the new column",
+      "Check if task status reflects 'In Progress'"
+    ]
+  },
+  {
+    id: "KANBAN_002",
+    scenario: "Drag a task from 'In Progress' to 'Done'",
+    type: "positive",
+    description: "Verify that a task can be moved from 'In Progress' to 'Done'",
+    expectedResult: "Task should appear under 'Done' with updated status",
+    priority: "high",
+    steps: [
+      "Identify a task card in 'In Progress'",
+      "Drag the card into the 'Done' column",
+      "Release and verify it is displayed in the 'Done' column",
+      "Confirm the status value is updated accordingly"
+    ]
+  },
+  {
+    id: "KANBAN_003",
+    scenario: "Attempt to drop a card outside any column",
+    type: "negative",
+    description: "Ensure task cards cannot be dropped outside of valid drop zones",
+    expectedResult: "Task should return to original column without changes",
+    priority: "medium",
+    steps: [
+      "Pick a task card from any column",
+      "Drag it outside of all columns (e.g., empty space)",
+      "Release the card and verify it snaps back to original column"
+    ]
+  },
+  {
+    id: "KANBAN_004",
+    scenario: "Reorder tasks within the same column (not supported)",
+    type: "negative",
+    description: "Verify that reordering within the same column has no effect (if not implemented)",
+    expectedResult: "No reordering should occur and task positions remain unchanged",
+    priority: "low",
+    steps: [
+      "Pick a task from 'Done' column",
+      "Attempt to drag it above/below other tasks within the same column",
+      "Release and observe that order remains the same"
+    ]
+  },
+  {
+    id: "KANBAN_005",
+    scenario: "Drag multiple tasks rapidly between columns",
+    type: "negative",
+    description: "Verify that the UI handles rapid drag-and-drop actions without breaking",
+    expectedResult: "Tasks should move correctly and UI should not freeze or glitch",
+    priority: "medium",
+    steps: [
+      "Select a task and move it quickly between columns",
+      "Repeat with 2–3 tasks in succession",
+      "Ensure that column contents update correctly and app remains responsive"
+    ]
+  },
+  {
+    id: "KANBAN_006",
+    scenario: "Verify task status update after drag and drop",
+    type: "positive",
+    description: "Ensure that internal task state updates accurately after drag and drop",
+    expectedResult: "Task object should reflect new status after drop",
+    priority: "high",
+    steps: [
+      "Drag a task from 'Not Started' to 'Done'",
+      "Inspect the task state in console or component props/state",
+      "Ensure that the status field equals 'Done'"
+    ]
+  },
+  {
+    id: "KANBAN_007",
+    scenario: "Drag task when no columns are rendered (edge case)",
+    type: "negative",
+    description: "Verify behavior when user tries to drag task while no columns exist",
+    expectedResult: "Drag should not throw errors or crash the app",
+    priority: "low",
+    steps: [
+      "Remove or hide all columns from the DOM",
+      "Try dragging a task card (if still visible)",
+      "Ensure app does not crash and shows fallback or does nothing"
+    ]
+  }
+]
+
+}
+
+export function createDateTestCases():TestCase[] {
+  return [
+  {
+    id: "EMP_001",
+    scenario: "Add a valid employment record",
+    type: "positive",
+    description: "Verify that a valid employment entry is added successfully",
+    expectedResult: "Employment entry should appear in the list without errors",
+    priority: "high",
+    steps: [
+      "Open the employment modal",
+      "Enter company name as 'Google'",
+      "Select start date as '2022-01-01'",
+      "Select end date as '2023-01-01'",
+      "Click Add button",
+      "Verify that 'Google' appears in the employment list"
+    ]
+  },
+  {
+    id: "EMP_002",
+    scenario: "Try adding overlapping employment dates",
+    type: "negative",
+    description: "Verify that overlapping dates between employments are not allowed",
+    expectedResult: "Warning should be shown and record should not be added",
+    priority: "high",
+    steps: [
+      "Add a job with start date '2021-01-01' and end date '2022-01-01'",
+      "Open modal again",
+      "Enter a new job with start date '2021-06-01' and end date '2021-12-01'",
+      "Click Add",
+      "Verify warning is displayed and job is not added to the list"
+    ]
+  },
+  {
+    id: "EMP_003",
+    scenario: "Add multiple non-overlapping employment records",
+    type: "positive",
+    description: "Ensure that user can add multiple non-overlapping jobs successfully",
+    expectedResult: "All records should be saved and displayed correctly",
+    priority: "medium",
+    steps: [
+      "Add job A from '2019-01-01' to '2020-01-01'",
+      "Add job B from '2020-02-01' to '2021-02-01'",
+      "Verify both jobs appear in the employment list"
+    ]
+  },
+  {
+    id: "EMP_004",
+    scenario: "Try adding a job without selecting any date",
+    type: "negative",
+    description: "Check validation when no start or end date is provided",
+    expectedResult: "Form should show validation error and block submission",
+    priority: "high",
+    steps: [
+      "Open the modal",
+      "Enter a company name",
+      "Leave start and end dates empty",
+      "Click Add",
+      "Verify form does not submit and shows date-related errors"
+    ]
+  },
+  {
+    id: "EMP_005",
+    scenario: "Try adding a job where end date is before start date",
+    type: "negative",
+    description: "Check behavior when user enters invalid date sequence",
+    expectedResult: "Validation message should be shown and form should not submit",
+    priority: "medium",
+    steps: [
+      "Open the modal",
+      "Enter start date '2023-01-01'",
+      "Enter end date '2022-01-01'",
+      "Click Add",
+      "Verify an error is shown and job is not added"
+    ]
+  },
+  {
+    id: "EMP_006",
+    scenario: "Add employment with same start and end date",
+    type: "positive",
+    description: "Verify if same-day employment entries are allowed",
+    expectedResult: "Record should be added if allowed by business logic",
+    priority: "low",
+    steps: [
+      "Open the modal",
+      "Enter start date and end date as '2023-05-15'",
+      "Enter a valid company name",
+      "Click Add",
+      "Verify if entry is added without validation errors"
+    ]
+  },
+  {
+    id: "EMP_007",
+    scenario: "Open employment modal and cancel without saving",
+    type: "positive",
+    description: "Ensure modal closes properly and data is not saved if cancelled",
+    expectedResult: "Modal closes and no new data is added",
+    priority: "low",
+    steps: [
+      "Click Add Employment button",
+      "Enter sample data",
+      "Click outside or press Escape",
+      "Verify modal closes and data is not added to the list"
+    ]
+  }
+]
+
+}
+
+export function createTimeTestCases(): TestCase[] {
+  return [
+  {
+    id: "SALON_001",
+    scenario: "Book appointment within working hours",
+    type: "positive",
+    description: "Verify that booking an appointment during salon open hours is successful",
+    expectedResult: "Appointment should be booked and success alert should be shown",
+    priority: "high",
+    steps: [
+      "Open the appointment booking component",
+      "Select time 10:00 AM",
+      "Click the Confirm button",
+      "Verify that success alert appears with correct time"
+    ]
+  },
+  {
+    id: "SALON_002",
+    scenario: "Book appointment before opening time",
+    type: "negative",
+    description: "Verify that user cannot book appointment before 09:00 AM",
+    expectedResult: "Error alert should appear saying selected time is outside salon hours",
+    priority: "high",
+    steps: [
+      "Open the appointment booking component",
+      "Select time 08:45 AM",
+      "Click the Confirm button",
+      "Verify that error alert appears"
+    ]
+  },
+  {
+    id: "SALON_003",
+    scenario: "Book appointment after closing time",
+    type: "negative",
+    description: "Verify that user cannot book appointment after 06:00 PM",
+    expectedResult: "Error alert should appear saying selected time is outside salon hours",
+    priority: "high",
+    steps: [
+      "Open the appointment booking component",
+      "Select time 06:30 PM",
+      "Click the Confirm button",
+      "Verify that error alert appears"
+    ]
+  },
+  {
+    id: "SALON_004",
+    scenario: "Book appointment at exact opening time",
+    type: "positive",
+    description: "Verify that user can book appointment at 09:00 AM",
+    expectedResult: "Appointment should be booked and success alert should be shown",
+    priority: "medium",
+    steps: [
+      "Open the appointment booking component",
+      "Select time 09:00 AM",
+      "Click the Confirm button",
+      "Verify that success alert appears"
+    ]
+  },
+  {
+    id: "SALON_005",
+    scenario: "Book appointment at exact closing time",
+    type: "positive",
+    description: "Verify that user can book appointment at 06:00 PM",
+    expectedResult: "Appointment should be booked and success alert should be shown",
+    priority: "medium",
+    steps: [
+      "Open the appointment booking component",
+      "Select time 06:00 PM",
+      "Click the Confirm button",
+      "Verify that success alert appears"
+    ]
+  },
+  {
+    id: "SALON_006",
+    scenario: "Book appointment with invalid time input",
+    type: "negative",
+    description: "Verify behavior when user selects an empty time or non-time value",
+    expectedResult: "Form should show validation error or prevent submission",
+    priority: "low",
+    steps: [
+      "Open the appointment booking component",
+      "Clear the time input or enter invalid value",
+      "Click the Confirm button",
+      "Ensure error is shown or submission is blocked"
+    ]
+  }
+]
+
+}
+
+export function createNotificationTestCases(): TestCase[] {
+  return [
+  {
+    id: "NOTIF_001",
+    scenario: "Request notification permission for the first time",
+    type: "positive",
+    description: "Verify user can request and grant notification permission",
+    expectedResult: "Permission prompt appears, and upon allowing, a notification is shown",
+    priority: "high",
+    steps: [
+      "Navigate to the page containing the NotificationPermission component",
+      "Click on 'Request Notification Permission' button",
+      "Click 'Allow' in the browser permission popup",
+      "Verify that a notification appears and success alert is shown"
+    ]
+  },
+  {
+    id: "NOTIF_002",
+    scenario: "User denies the notification permission",
+    type: "negative",
+    description: "Verify behavior when the user clicks 'Deny' on the permission prompt",
+    expectedResult: "An error alert should appear stating permission was denied",
+    priority: "high",
+    steps: [
+      "Click on 'Request Notification Permission'",
+      "In the browser prompt, click 'Deny'",
+      "Check that an error alert appears with appropriate messaging"
+    ]
+  },
+  {
+    id: "NOTIF_003",
+    scenario: "User dismisses the notification permission prompt without selecting",
+    type: "negative",
+    description: "Verify system handles dismissal of the browser permission popup",
+    expectedResult: "An alert with appropriate message should be displayed",
+    priority: "medium",
+    steps: [
+      "Click on 'Request Notification Permission'",
+      "Close the browser permission popup without selecting",
+      "Verify that a warning or neutral error message is shown"
+    ]
+  },
+  {
+    id: "NOTIF_004",
+    scenario: "User has already granted permission",
+    type: "positive",
+    description: "Ensure app handles already granted permission gracefully",
+    expectedResult: "A success alert appears and a dummy notification is triggered",
+    priority: "medium",
+    steps: [
+      "Ensure permission is already granted (simulate manually if needed)",
+      "Click the 'Request Notification Permission' button",
+      "Verify that no prompt appears and notification is triggered directly"
+    ]
+  },
+  {
+    id: "NOTIF_005",
+    scenario: "User has previously denied notification permission",
+    type: "negative",
+    description: "Check behavior when permission is already set to 'denied'",
+    expectedResult: "No prompt is shown, and a warning alert asks to change browser settings",
+    priority: "high",
+    steps: [
+      "Ensure browser has previously denied the notification permission",
+      "Reload the app and click the 'Request Notification Permission' button",
+      "Verify that no popup appears, and alert guides user to change settings"
+    ]
+  },
+  {
+    id: "NOTIF_006",
+    scenario: "Browser does not support notifications",
+    type: "negative",
+    description: "Test compatibility fallback for unsupported browsers",
+    expectedResult: "A generic error alert should appear",
+    priority: "medium",
+    steps: [
+      "Simulate or test on an environment where Notification API is not supported",
+      "Click the request permission button",
+      "Verify that a fallback error is shown"
+    ]
+  }
+]
+
+}
 export function createFormTestCases(): TestCase[] {
   return [
   {
