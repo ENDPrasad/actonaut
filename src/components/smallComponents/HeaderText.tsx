@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 
-function HeaderText({ text }: { text: string }) {
+function HeaderText({ text, color= '' }: { text: string, color?:string }) {
   return (
-    <Typography sx={{ fontSize: "2rem", fontWeight: "800" }}>{text}</Typography>
+    <Typography sx={{ color: `${color}`, fontSize: "2rem", fontWeight: "800" }}>{text}</Typography>
   );
 }
 

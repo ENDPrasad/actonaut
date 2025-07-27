@@ -6,14 +6,15 @@ export const COLORS = {
   primary: {
     main: '#4052B5',
     light: 'rgba(64, 82, 181, 0.9)',
+    veryLight: '#c5cae9',
     dark: '#004ba0',
     contrastText: '#ffffff',
   },
   secondary: {
-    main: '#9c27b0',
+    main: '',
     light: '#d05ce3',
-    dark: '#6a0080',
-    contrastText: '#ffffff',
+    dark: '#fcc419',
+    contrastText: '#efe66a',
   },
   error: {
     main: '#d32f2f',
@@ -21,10 +22,12 @@ export const COLORS = {
   background: {
     default: '#f5f5f5',
     paper: '#ffffff',
+
   },
   text: {
     primary: '#242424',
     secondary: '#757575',
+
   },
 };
 
