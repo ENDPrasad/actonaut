@@ -794,6 +794,350 @@ export function createDateTestCases():TestCase[] {
 
 }
 
+export function createKeyboardTestcases(): TestCase[] {
+  return [
+  {
+    id: "CHAT_001",
+    scenario: "Send a normal text message",
+    type: "positive",
+    description: "Verify that a user can send a basic text message without links",
+    expectedResult: "Message should appear in the chat window after clicking Send",
+    priority: "high",
+    steps: [
+      "Render the TeamsChat component",
+      "Type 'Hello Team!' in the input field",
+      "Click the Send button",
+      "Verify the message 'Hello Team!' appears in the chat area"
+    ]
+  },
+  {
+    id: "CHAT_002",
+    scenario: "Send a message with a clickable link",
+    type: "positive",
+    description: "Verify that a URL in the sent message becomes clickable directly",
+    expectedResult: "Link should be rendered and clickable without Ctrl key after sending",
+    priority: "high",
+    steps: [
+      "Render the TeamsChat component",
+      "Type 'Check this https://example.com' in the input field",
+      "Click the Send button",
+      "Verify that 'https://example.com' is rendered as a clickable link",
+      "Click the link and verify it opens in a new tab"
+    ]
+  },
+  {
+    id: "CHAT_003",
+    scenario: "Ctrl+Click to preview a link before sending",
+    type: "positive",
+    description: "Verify that URLs typed in the input field require Ctrl+Click to open before sending",
+    expectedResult: "Link should only open in new tab when Ctrl is held and clicked in preview",
+    priority: "medium",
+    steps: [
+      "Render the TeamsChat component",
+      "Type 'Visit https://openai.com' in the input field",
+      "Hold Ctrl and click the link in the preview section",
+      "Verify that the link opens in a new tab"
+    ]
+  },
+  {
+    id: "CHAT_004",
+    scenario: "Click link without Ctrl in preview",
+    type: "negative",
+    description: "Verify that clicking the link without Ctrl in the input preview does not open the link",
+    expectedResult: "Link should not open and should prevent default behavior",
+    priority: "medium",
+    steps: [
+      "Render the TeamsChat component",
+      "Type 'Go to https://openai.com' in the input field",
+      "Click the link without holding Ctrl",
+      "Verify that the link does not open"
+    ]
+  },
+  {
+    id: "CHAT_005",
+    scenario: "Block sending empty or whitespace-only message",
+    type: "negative",
+    description: "Verify that clicking Send with empty or whitespace-only input does not send a message",
+    expectedResult: "No message should be added to the chat area",
+    priority: "medium",
+    steps: [
+      "Render the TeamsChat component",
+      "Type a single space character in the input field",
+      "Click the Send button",
+      "Verify that no message appears in the chat area"
+    ]
+  },
+  {
+    id: "CHAT_006",
+    scenario: "Send message using Enter key",
+    type: "positive",
+    description: "Verify that pressing Enter sends the message",
+    expectedResult: "Message should be added to chat area",
+    priority: "high",
+    steps: [
+      "Render the TeamsChat component",
+      "Type 'Hello via Enter' in the input field",
+      "Press Enter key",
+      "Verify that the message appears in the chat window"
+    ]
+  },
+  {
+    id: "CHAT_007",
+    scenario: "Handle multi-line message with Shift+Enter",
+    type: "positive",
+    description: "Verify that Shift+Enter creates a new line in the input field",
+    expectedResult: "New line should be added instead of sending the message",
+    priority: "medium",
+    steps: [
+      "Render the TeamsChat component",
+      "Type 'Hello' and press Shift+Enter",
+      "Type 'World'",
+      "Verify that the input has two lines and message is not sent"
+    ]
+  }
+]
+
+}
+
+export function createTableTestCases(): TestCase[] {
+  return [
+  {
+    id: "EMP_001",
+    scenario: "Add a new employee with valid data",
+    type: "positive",
+    description: "Verify that a new employee is added when valid data is entered in the modal",
+    expectedResult: "Employee row should appear in the table with the entered data",
+    priority: "high",
+    steps: [
+      "Click on 'Add Employee' button",
+      "Enter valid Name, Position, Department, Email, and Location",
+      "Click on 'Save'",
+      "Verify that the new employee is listed in the table"
+    ]
+  },
+  {
+    id: "EMP_002",
+    scenario: "Try to add employee with missing fields",
+    type: "negative",
+    description: "Verify that the form does not submit when required fields are empty",
+    expectedResult: "Form should show validation errors and not add a new row",
+    priority: "high",
+    steps: [
+      "Click on 'Add Employee' button",
+      "Leave the name and email fields blank",
+      "Click on 'Save'",
+      "Verify that validation errors are shown and row is not added"
+    ]
+  },
+  {
+    id: "EMP_003",
+    scenario: "Edit existing employee details",
+    type: "positive",
+    description: "Verify that user can successfully update employee details through modal",
+    expectedResult: "Updated data should reflect in the corresponding row",
+    priority: "medium",
+    steps: [
+      "Click on 'Edit' for the first employee",
+      "Change the department and email",
+      "Click 'Save'",
+      "Verify the table shows updated department and email"
+    ]
+  },
+  {
+    id: "EMP_004",
+    scenario: "Delete an employee from the table",
+    type: "positive",
+    description: "Verify that an employee row is removed when delete button is clicked",
+    expectedResult: "The row should be removed from the table",
+    priority: "medium",
+    steps: [
+      "Click on 'Delete' for the first employee",
+      "Confirm the deletion",
+      "Verify that the employee is no longer in the table"
+    ]
+  },
+  {
+    id: "EMP_005",
+    scenario: "Sort employees by Position column",
+    type: "positive",
+    description: "Verify that clicking the Position column header sorts the data",
+    expectedResult: "Rows should be sorted in ascending or descending order based on position",
+    priority: "low",
+    steps: [
+      "Click on the Position column header once",
+      "Verify that rows are sorted in ascending order",
+      "Click again to sort in descending order",
+      "Verify order has changed accordingly"
+    ]
+  },
+  {
+    id: "EMP_006",
+    scenario: "Search employees by name",
+    type: "positive",
+    description: "Verify that search bar filters employees by name keyword",
+    expectedResult: "Only rows with matching names should be visible",
+    priority: "medium",
+    steps: [
+      "Type 'Alice' in the search bar",
+      "Verify that only rows with 'Alice' in the name are displayed"
+    ]
+  },
+  {
+    id: "EMP_007",
+    scenario: "Search with no matching results",
+    type: "negative",
+    description: "Verify that table handles no results when search query does not match any row",
+    expectedResult: "No rows should be displayed and a message like 'No data found' can be shown",
+    priority: "low",
+    steps: [
+      "Type 'Zebra' in the search bar",
+      "Verify that no results are shown"
+    ]
+  },
+  {
+    id: "EMP_008",
+    scenario: "Try to delete a row and cancel the confirmation",
+    type: "negative",
+    description: "Verify that clicking cancel on confirmation does not remove the employee",
+    expectedResult: "Row should remain in the table",
+    priority: "low",
+    steps: [
+      "Click on 'Delete' for an employee",
+      "Click 'Cancel' in the confirmation prompt",
+      "Verify that the employee row is still present"
+    ]
+  },
+  {
+    id: "EMP_009",
+    scenario: "Edit modal opens with existing employee data",
+    type: "positive",
+    description: "Verify that the modal displays the correct data for the selected employee",
+    expectedResult: "Input fields in modal should be pre-filled with employee's current info",
+    priority: "medium",
+    steps: [
+      "Click on 'Edit' for the third employee",
+      "Verify modal shows the correct name, email, etc."
+    ]
+  },
+  {
+    id: "EMP_010",
+    scenario: "Add employee with duplicate email",
+    type: "negative",
+    description: "Verify that duplicate email is not allowed when adding new employee",
+    expectedResult: "Form should prevent submission or show an error for duplicate email",
+    priority: "medium",
+    steps: [
+      "Click on 'Add Employee'",
+      "Enter email that already exists in another employee row",
+      "Click 'Save'",
+      "Verify that error is shown or submission is blocked"
+    ]
+  }
+]
+
+}
+
+export function createScrollTestcases(): TestCase[] {
+  return [
+  {
+    id: "COURSE_001",
+    scenario: "Initial load displays first 5 courses",
+    type: "positive",
+    description: "Verify that only the first 5 courses are loaded on initial render",
+    expectedResult: "First 5 courses should be displayed on page load",
+    priority: "high",
+    steps: [
+      "Navigate to the course explorer page",
+      "Observe the number of courses rendered initially",
+      "Ensure only 5 courses are visible"
+    ]
+  },
+  {
+    id: "COURSE_002",
+    scenario: "Scroll down to trigger lazy load",
+    type: "positive",
+    description: "Verify that more courses are loaded as user scrolls down",
+    expectedResult: "Next 5 courses should load when scrolling near the bottom",
+    priority: "high",
+    steps: [
+      "Navigate to the course explorer page",
+      "Scroll to the bottom of the left course list container",
+      "Wait for the loading spinner",
+      "Verify that 5 additional courses are appended to the list"
+    ]
+  },
+  {
+    id: "COURSE_003",
+    scenario: "Click on a course card to preview",
+    type: "positive",
+    description: "Verify that clicking a course displays its full description on the right",
+    expectedResult: "Course title and description should be displayed in the preview panel",
+    priority: "medium",
+    steps: [
+      "Navigate to the course explorer page",
+      "Click on any visible course card",
+      "Verify that the corresponding course content appears on the right"
+    ]
+  },
+  {
+    id: "COURSE_004",
+    scenario: "Click the same course twice",
+    type: "positive",
+    description: "Ensure that clicking the same course again doesn't cause an error or flicker",
+    expectedResult: "Course remains selected and no errors occur",
+    priority: "low",
+    steps: [
+      "Navigate to the course explorer page",
+      "Click on a course card",
+      "Click on the same course card again",
+      "Ensure the preview still shows correctly and app behaves normally"
+    ]
+  },
+  {
+    id: "COURSE_005",
+    scenario: "Do not scroll",
+    type: "negative",
+    description: "Verify that only 5 courses are shown if user does not scroll",
+    expectedResult: "Course list should not expand unless scrolled",
+    priority: "medium",
+    steps: [
+      "Navigate to the course explorer page",
+      "Do not perform any scroll",
+      "Ensure that only the initial 5 courses are present"
+    ]
+  },
+  {
+    id: "COURSE_006",
+    scenario: "Scroll after all courses loaded",
+    type: "negative",
+    description: "Verify that no additional loading occurs after all courses are rendered",
+    expectedResult: "Loading spinner should not appear and no duplicate cards should be added",
+    priority: "medium",
+    steps: [
+      "Navigate to the course explorer page",
+      "Scroll repeatedly until all courses are visible",
+      "Continue scrolling",
+      "Ensure no additional loading or UI flickering occurs"
+    ]
+  },
+  {
+    id: "COURSE_007",
+    scenario: "Simulate no internet or slow connection",
+    type: "negative",
+    description: "Verify behavior when loading next batch of courses fails or delays",
+    expectedResult: "Loading spinner remains visible or shows fallback; app does not crash",
+    priority: "low",
+    steps: [
+      "Throttle network to slow 3G using browser dev tools",
+      "Scroll to bottom of course list",
+      "Observe loading behavior",
+      "Ensure app stays stable even if loading is delayed"
+    ]
+  }
+]
+
+}
+
 export function createTimeTestCases(): TestCase[] {
   return [
   {

@@ -15,6 +15,9 @@ import KanbanBoard from "../../scenarios/KanbanBoard/KanbanBoard"
 import EmploymentHistory from "../../scenarios/EmploymentHistory/EmploymentHistory"
 import AppointmentBooking from "../../scenarios/BookAppointment.tsx/ApointmentBooking"
 import NotificationPermission from "../../scenarios/Notification/NotificationPermisssion"
+import TeamsChat from "../../scenarios/TeamsChat/TeamsChatWindow"
+import EmployeeTable from "../../scenarios/TableCRUD/CRUDTable"
+import CourseExplorer from "../../scenarios/DynamicCourseLoader/CourseExplorer"
 
 export function getScenarioById(scenarioId: string): PracticeScenario | null {
   const scenarios: Record<string, PracticeScenario> = {
@@ -173,6 +176,51 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     "Handle permission checks before sending notifications"
   ],
   siteContent: NotificationPermission()
+},
+"keyboard": {
+  id: "keyboard-events",
+  title: "Keyboard Events Automation",
+  description: "Learn to automate and validate keyboard interactions such as typing, shortcuts, and form navigation using key events.",
+  category: "Input",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Simulate typing in input fields using key events",
+    "Test form submissions via Enter key",
+    "Validate keyboard accessibility with Tab navigation",
+    "Trigger and verify custom keyboard shortcuts (e.g., Ctrl + S)",
+    "Handle and test key combinations for custom behaviors"
+  ],
+  siteContent: TeamsChat()
+},
+"table": {
+  id: "table-interaction",
+  title: "Table Automation",
+  description: "Learn to automate and validate data interactions within table elements, including sorting, filtering, and pagination.",
+  category: "Data Display",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Extract and validate data from table rows and columns",
+    "Test sorting functionality for each column",
+    "Automate filtering and search within table data",
+    "Validate pagination and dynamic row rendering",
+    "Test table updates after user actions or API responses"
+  ],
+  siteContent: EmployeeTable()
+},
+"scroll": {
+  id: "scroll-behavior",
+  title: "Scroll Automation",
+  description: "Learn to automate and validate scrolling behaviors including lazy loading, infinite scroll, and visibility of dynamic content.",
+  category: "Page Interaction",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Simulate vertical and horizontal scrolling to specific elements",
+    "Trigger and validate lazy-loaded content",
+    "Automate infinite scroll interactions and assertions",
+    "Ensure visibility of elements brought into view via scroll",
+    "Test fixed/sticky element behavior during scroll"
+  ],
+  siteContent: CourseExplorer()
 },
 
     "radio": {

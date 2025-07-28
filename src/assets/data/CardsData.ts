@@ -126,6 +126,14 @@ export const automationTopics: AutomationTopic[] = [
     category: "Navigation"
   },
   {
+  id: "table",
+  title: "Table",
+  aliases: ["Data Table", "Grid", "Rows and Columns", "Table Cell", "Tabular Data"],
+  description: "Automate interactions with tables including reading data, sorting, filtering, and validating row-column values.",
+  path: "/explore/table",
+  category: "DOM Interaction"
+},
+  {
     id: "multiwindow",
     title: "Multi Window",
     aliases: ["New Tab", "Multiple Windows", "Popup Window"],

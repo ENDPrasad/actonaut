@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Tabs, Tab, Box } from "@mui/material"
 import type { TabItem } from "../../interfaces/interfaces"
 import { PRIMARY_COLOR } from "../../helper/contants"
@@ -14,12 +13,39 @@ interface TabNavigationProps {
 }
 
 export function TabNavigation({ tabs, defaultActiveTab, onTabChange }: TabNavigationProps) {
-  const [activeTab, setActiveTab] = useState(defaultActiveTab || tabs[0]?.id)
+  // ✅ Set initial active tab from hash or fallback to default
+  const getInitialTab = () => {
+    const hash = typeof window !== "undefined" ? window.location.hash.replace("#", "") : ""
+    return hash || defaultActiveTab || tabs[0]?.id
+  }
 
+  const [activeTab, setActiveTab] = useState(getInitialTab)
+
+  // ✅ Sync hash with tab state when tab changes
   const handleTabChange = (_event: React.SyntheticEvent, newValue: string) => {
     setActiveTab(newValue)
+    window.location.hash = newValue // updates the URL with #tabId
     onTabChange?.(newValue)
   }
+
+  // ✅ When user navigates directly to a URL with #tabId
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const onHashChange = () => {
+      const tabId = window.location.hash.replace("#", "")
+      if (tabId && tabId !== activeTab && tabs.some(tab => tab.id === tabId)) {
+        setActiveTab(tabId)
+        onTabChange?.(tabId)
+      }
+    }
+
+    // Initial check on mount
+    onHashChange()
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", onHashChange)
+    return () => window.removeEventListener("hashchange", onHashChange)
+  }, [activeTab, tabs, onTabChange])
 
   const activeTabContent = tabs.find((tab) => tab.id === activeTab)?.content
 

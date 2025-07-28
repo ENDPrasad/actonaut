@@ -63,6 +63,48 @@ export const conceptsData = {
       "Multi-option selection",
     ],
   },
+  keyboard: {
+  name: "keyboard",
+  type: "keyboard",
+  overview:
+    "Keyboard events allow automation scripts to simulate or respond to user key interactions such as typing, pressing shortcuts, or navigating forms.",
+  syntaxCode: 'element.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }))',
+  useCases: [
+    "Form submission using Enter key",
+    "Navigating through inputs with Tab",
+    "Testing keyboard accessibility",
+    "Triggering shortcuts (e.g., Ctrl + S)",
+    "Simulating typing in input fields"
+  ],
+},
+table: {
+  name: "table",
+  type: "table",
+  overview:
+    "Tables display structured data in rows and columns. Automation scripts interact with them for data validation, sorting, filtering, and pagination testing.",
+  syntaxCode: 'document.querySelector("table").rows[1].cells[0].textContent',
+  useCases: [
+    "Validating table data after form submissions",
+    "Testing sorting functionality in columns",
+    "Filtering and verifying search results",
+    "Paginating large datasets",
+    "Extracting tabular information for assertions"
+  ],
+},
+scroll: {
+  name: "scroll",
+  type: "scroll",
+  overview:
+    "Scroll automation involves simulating or validating vertical or horizontal scroll behaviors to reveal hidden content, trigger lazy loading, or interact with infinite scroll components.",
+  syntaxCode: 'element.scrollIntoView({ behavior: "smooth" })',
+  useCases: [
+    "Triggering lazy-loaded content",
+    "Interacting with elements outside the viewport",
+    "Testing infinite scroll pagination",
+    "Validating sticky header or footer behavior",
+    "Ensuring smooth scrolling transitions and performance"
+  ],
+},
   radio: {
     name: "radio",
     type: "radio",
