@@ -10,6 +10,14 @@ import QuizBoard from "../../scenarios/Quiz/QuizBoard"
 import NewsFeedBoard from "../../scenarios/NewsFeed/NewsFeedBoard"
 import MultiLingualSite from "../../scenarios/LanguageSelection/MultiLingualSite"
 import HTMLEditor from "../../scenarios/HTMLCodeEditor/HTMLEditor"
+import DeleteModalWindow from "../../scenarios/ModalWindow/DeleteModalWindow"
+import KanbanBoard from "../../scenarios/KanbanBoard/KanbanBoard"
+import EmploymentHistory from "../../scenarios/EmploymentHistory/EmploymentHistory"
+import AppointmentBooking from "../../scenarios/BookAppointment.tsx/ApointmentBooking"
+import NotificationPermission from "../../scenarios/Notification/NotificationPermisssion"
+import TeamsChat from "../../scenarios/TeamsChat/TeamsChatWindow"
+import EmployeeTable from "../../scenarios/TableCRUD/CRUDTable"
+import CourseExplorer from "../../scenarios/DynamicCourseLoader/CourseExplorer"
 
 export function getScenarioById(scenarioId: string): PracticeScenario | null {
   const scenarios: Record<string, PracticeScenario> = {
@@ -45,6 +53,37 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     "Test cross-origin iframe restrictions and behaviors"
   ],
   siteContent: HTMLEditor()
+},
+"modal": {
+  id: "modal",
+  title: "Modal Window Automation",
+  description: "Learn to automate opening, interacting with, and closing modal windows in web applications",
+  category: "UI Components",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Understand modal window behavior and structure",
+    "Automate opening and closing modals",
+    "Interact with elements inside modals (forms, buttons, etc.)",
+    "Handle modals triggered by dynamic events",
+    "Verify modal visibility and dismissal actions"
+  ],
+  siteContent: DeleteModalWindow()
+}
+,
+"draganddrop": {
+  id: "drag-and-drop",
+  title: "Drag and Drop Automation",
+  description: "Learn to automate dragging elements and dropping them into target containers in web interfaces",
+  category: "UI Components",
+  difficulty: "advanced",
+  learningObjectives: [
+    "Understand native and custom drag and drop mechanics",
+    "Automate dragging elements across containers or zones",
+    "Verify successful drop actions and positioning",
+    "Handle dynamic drag sources and drop targets",
+    "Test edge cases like restricted or invalid drop zones"
+  ],
+  siteContent: KanbanBoard()
 },
 
     "button-states": {
@@ -93,6 +132,97 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
       ],
       siteContent: InputValidationScenario(),
     },
+    "datepicker": {
+  id: "date-picker",
+  title: "Date Picker Automation",
+  description: "Learn to automate interactions with date picker components in forms and scheduling interfaces",
+  category: "Input",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Automate selecting single and range dates",
+    "Handle native and custom date pickers",
+    "Verify selected dates in input fields",
+    "Test min/max date restrictions",
+    "Handle calendar navigation and validation"
+  ],
+  siteContent: EmploymentHistory()
+},
+"timepicker": {
+  id: "time-picker",
+  title: "Time Picker Automation",
+  description: "Learn to automate interactions with time picker components in forms and scheduling interfaces",
+  category: "Input",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Automate selecting specific time values",
+    "Handle native and custom time pickers",
+    "Verify selected time in input fields",
+    "Test min/max time restrictions",
+    "Handle time format (12hr/24hr) and validation"
+  ],
+  siteContent: AppointmentBooking()
+},
+"notificationpermission": {
+  id: "notification-permission",
+  title: "Notification Permission Automation",
+  description: "Learn to automate handling of browser notification permission prompts and validate responses",
+  category: "Browser APIs",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Trigger and detect notification permission prompts",
+    "Simulate allow, deny, and default permission states",
+    "Validate behavior based on granted or denied permission",
+    "Test notification workflows with different browser settings",
+    "Handle permission checks before sending notifications"
+  ],
+  siteContent: NotificationPermission()
+},
+"keyboard": {
+  id: "keyboard-events",
+  title: "Keyboard Events Automation",
+  description: "Learn to automate and validate keyboard interactions such as typing, shortcuts, and form navigation using key events.",
+  category: "Input",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Simulate typing in input fields using key events",
+    "Test form submissions via Enter key",
+    "Validate keyboard accessibility with Tab navigation",
+    "Trigger and verify custom keyboard shortcuts (e.g., Ctrl + S)",
+    "Handle and test key combinations for custom behaviors"
+  ],
+  siteContent: TeamsChat()
+},
+"table": {
+  id: "table-interaction",
+  title: "Table Automation",
+  description: "Learn to automate and validate data interactions within table elements, including sorting, filtering, and pagination.",
+  category: "Data Display",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Extract and validate data from table rows and columns",
+    "Test sorting functionality for each column",
+    "Automate filtering and search within table data",
+    "Validate pagination and dynamic row rendering",
+    "Test table updates after user actions or API responses"
+  ],
+  siteContent: EmployeeTable()
+},
+"scroll": {
+  id: "scroll-behavior",
+  title: "Scroll Automation",
+  description: "Learn to automate and validate scrolling behaviors including lazy loading, infinite scroll, and visibility of dynamic content.",
+  category: "Page Interaction",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Simulate vertical and horizontal scrolling to specific elements",
+    "Trigger and validate lazy-loaded content",
+    "Automate infinite scroll interactions and assertions",
+    "Ensure visibility of elements brought into view via scroll",
+    "Test fixed/sticky element behavior during scroll"
+  ],
+  siteContent: CourseExplorer()
+},
+
     "radio": {
   id: "radio",
   title: "Radio Button Input Automation",

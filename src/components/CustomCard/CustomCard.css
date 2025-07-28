@@ -1,0 +1,8 @@
+.custom-card {
+    background-image: url('../../assets/background-design.svg') !important;
+    background-position: center;
+    background-position-x: right;
+    background-blend-mode: hard-light;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

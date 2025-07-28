@@ -11,15 +11,6 @@ export const automationTopics: AutomationTopic[] = [
     tags: ["click", "interaction", "hover"]
   },
   {
-    id: "input",
-    title: "Input Fields",
-    aliases: ["Text Input", "Form Control", "Type", "Textbox"],
-    description: "Practice typing, clearing, validating inputs and handling edge cases in forms.",
-    path: "/explore/input",
-    category: "Input",
-    tags: ["form", "type", "validation"]
-  },
-  {
   id: "form",
   title: "Form",
   aliases: ["Input Form", "User Form", "Submit", "Validation", "Text Fields"],
@@ -46,6 +37,15 @@ export const automationTopics: AutomationTopic[] = [
     category: "Input"
   },
   {
+  id: "datepicker",
+  title: "Date Picker",
+  aliases: ["Calendar", "Date Input", "Select Date", "Form Datepicker"],
+  description: "Learn how to work with date pickers, select dates, and validate date-based inputs.",
+  path: "/explore/datepicker",
+  category: "Input"
+},
+
+  {
     id: "dropdown",
     title: "Dropdown",
     aliases: ["Select", "Options", "Combo Box", "List", "Select Menu"],
@@ -53,6 +53,22 @@ export const automationTopics: AutomationTopic[] = [
     path: "/explore/dropdown",
     category: "Input"
   },
+  {
+  id: "timepicker",
+  title: "Time Picker",
+  aliases: ["Time Input", "Clock Picker", "Select Time", "Form Timepicker"],
+  description: "Learn how to automate selecting and validating time inputs in forms and scheduling interfaces.",
+  path: "/explore/timepicker",
+  category: "Input"
+},
+{
+  id: "notificationpermission",
+  title: "Notification Permission",
+  aliases: ["Browser Notification", "Push Permission", "Notification Prompt", "Allow Notifications"],
+  description: "Automate handling browser notification permission prompts and validating user responses during tests.",
+  path: "/explore/notificationpermission",
+  category: "Browser APIs"
+},
   {
     id: "alert",
     title: "Alert & Prompt",
@@ -86,11 +102,11 @@ export const automationTopics: AutomationTopic[] = [
     category: "Interaction"
   },
   {
-    id: "drag",
+    id: "draganddrop",
     title: "Drag & Drop",
     aliases: ["Reorder", "Draggable", "Sort"],
     description: "Test drag-and-drop features across lists, containers, or grids.",
-    path: "/explore/drag-drop",
+    path: "/explore/draganddrop",
     category: "Event"
   },
   {
@@ -109,6 +125,14 @@ export const automationTopics: AutomationTopic[] = [
     path: "/explore/navigation",
     category: "Navigation"
   },
+  {
+  id: "table",
+  title: "Table",
+  aliases: ["Data Table", "Grid", "Rows and Columns", "Table Cell", "Tabular Data"],
+  description: "Automate interactions with tables including reading data, sorting, filtering, and validating row-column values.",
+  path: "/explore/table",
+  category: "DOM Interaction"
+},
   {
     id: "multiwindow",
     title: "Multi Window",

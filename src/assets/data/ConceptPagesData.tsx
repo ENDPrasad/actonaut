@@ -39,56 +39,7 @@ export const conceptsData = {
     "Checkout / Payment → Gather shipping and billing info",
     "Search → Submit keywords for product or content lookup"
   ],
-}
-,
-  input: {
-  name: "input",
-  type: "input",
-  overview:
-    "The <input> element is a versatile HTML tag used to collect user data in forms or interfaces. It supports various types, each designed for specific use cases:\n\n" +
-    "- text: Default input for short text.\n" +
-    "- email: Validates and collects email addresses.\n" +
-    "- password: Masks characters for secure input.\n" +
-    "- number: Allows only numerical input, with optional min/max/step.\n" +
-    "- checkbox: Select one or more options in a group.\n" +
-    "- radio: Select a single option from a group.\n" +
-    "- file: Upload files from user device.\n" +
-    "- date / datetime-local / time / month / week: Collect time-based values.\n" +
-    "- range: Slider for numeric values.\n" +
-    "- search: Optimized for search fields.\n" +
-    "- tel: Accepts telephone numbers.\n" +
-    "- url: Validates and collects website URLs.\n" +
-    "- color: Color picker input.\n" +
-    "- hidden: Sends invisible data in forms.",
-  syntaxCode:
-    `<input type="text" placeholder="Enter your name" />\n` +
-    `<input type="email" placeholder="Enter your email" />\n` +
-    `<input type="password" placeholder="Enter password" />\n` +
-    `<input type="number" min="1" max="100" />\n` +
-    `<input type="checkbox" checked />\n` +
-    `<input type="radio" name="gender" value="male" />\n` +
-    `<input type="file" />\n` +
-    `<input type="date" />\n` +
-    `<input type="range" min="0" max="10" />\n` +
-    `<input type="search" />\n` +
-    `<input type="tel" placeholder="123-456-7890" />\n` +
-    `<input type="url" placeholder="https://example.com" />\n` +
-    `<input type="color" />\n` +
-    `<input type="hidden" value="userId123" />`,
-  useCases: [
-    "User credentials → email, password fields in login/signup forms",
-    "Preferences → checkbox for interests or agreements",
-    "Profile info → text, number, tel, date in user profile forms",
-    "Media upload → file input for uploading images or documents",
-    "Polls/Surveys → radio and checkbox groups for selection",
-    "Booking systems → date, time, month inputs for scheduling",
-    "Price selectors → range input for min-max filters",
-    "Search → search fields in toolbars or websites",
-    "Color themes → color picker to let users choose custom theme",
-    "Form metadata → hidden inputs to pass non-visible data (e.g., IDs)"
-  ],
-}
-,
+  },
   select: {
     name: "select",
     type: "select",
@@ -112,6 +63,48 @@ export const conceptsData = {
       "Multi-option selection",
     ],
   },
+  keyboard: {
+  name: "keyboard",
+  type: "keyboard",
+  overview:
+    "Keyboard events allow automation scripts to simulate or respond to user key interactions such as typing, pressing shortcuts, or navigating forms.",
+  syntaxCode: 'element.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }))',
+  useCases: [
+    "Form submission using Enter key",
+    "Navigating through inputs with Tab",
+    "Testing keyboard accessibility",
+    "Triggering shortcuts (e.g., Ctrl + S)",
+    "Simulating typing in input fields"
+  ],
+},
+table: {
+  name: "table",
+  type: "table",
+  overview:
+    "Tables display structured data in rows and columns. Automation scripts interact with them for data validation, sorting, filtering, and pagination testing.",
+  syntaxCode: 'document.querySelector("table").rows[1].cells[0].textContent',
+  useCases: [
+    "Validating table data after form submissions",
+    "Testing sorting functionality in columns",
+    "Filtering and verifying search results",
+    "Paginating large datasets",
+    "Extracting tabular information for assertions"
+  ],
+},
+scroll: {
+  name: "scroll",
+  type: "scroll",
+  overview:
+    "Scroll automation involves simulating or validating vertical or horizontal scroll behaviors to reveal hidden content, trigger lazy loading, or interact with infinite scroll components.",
+  syntaxCode: 'element.scrollIntoView({ behavior: "smooth" })',
+  useCases: [
+    "Triggering lazy-loaded content",
+    "Interacting with elements outside the viewport",
+    "Testing infinite scroll pagination",
+    "Validating sticky header or footer behavior",
+    "Ensuring smooth scrolling transitions and performance"
+  ],
+},
   radio: {
     name: "radio",
     type: "radio",
@@ -189,6 +182,21 @@ export const conceptsData = {
       "Resume uploads in job portals",
     ],
   },
+  modal: {
+  name: "modal",
+  type: "modal",
+  overview:
+    "A modal is a dialog or popup window that appears on top of the current page, often used to display important information, forms, confirmations, or custom content without navigating away.",
+  syntaxCode: `<div class="modal">Your content here</div>`,
+  useCases: [
+    "Login or signup forms",
+    "Delete confirmation dialogs",
+    "Image previews or detailed content views",
+    "Alert or success messages in workflows",
+    "Form wizards or step-based processes"
+  ],
+}
+,
   draganddrop: {
     name: "draganddrop",
     type: "draganddrop",
@@ -201,6 +209,45 @@ export const conceptsData = {
       "Visual builders",
     ],
   },
+  timepicker: {
+  name: "timepicker",
+  type: "timepicker",
+  overview:
+    "Allows users to select a specific time value, typically using a clock-style UI or dropdown. Helps ensure consistent and valid time input in forms.",
+  syntaxCode: '<input type="time" />',
+  useCases: [
+    "Scheduling meetings or appointments",
+    "Booking time slots for services",
+    "Setting reminders or alarms",
+    "Logging time for tasks or events"
+  ],
+},
+notificationpermission: {
+  name: "notificationpermission",
+  type: "notificationpermission",
+  overview:
+    "Manages permission requests for showing browser notifications to users. Typically triggered on page load or by user interaction to allow, deny, or default notification access.",
+  syntaxCode: 'Notification.requestPermission().then(permission => { console.log(permission); })',
+  useCases: [
+    "Requesting permission for push notifications",
+    "Testing allow/deny/default permission flows",
+    "Validating notification behavior based on permission",
+    "Automating scenarios for browser-based alerts or reminders"
+  ],
+},
+  datepicker: {
+  name: "datepicker",
+  type: "datepicker",
+  overview:
+    "Allows users to select a date from a calendar interface instead of typing manually. Useful for ensuring consistent date formats and enhancing user experience.",
+  syntaxCode: '<input type="date" />',
+  useCases: [
+    "Selecting birth dates in forms",
+    "Choosing booking or reservation dates",
+    "Filtering reports by date range",
+    "Scheduling appointments or meetings"
+  ],
+},
   multitab: {
     name: "multitab",
     type: "multitab",
