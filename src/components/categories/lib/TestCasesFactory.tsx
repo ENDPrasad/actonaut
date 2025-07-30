@@ -1138,6 +1138,119 @@ export function createScrollTestcases(): TestCase[] {
 
 }
 
+export function createDropDownTestCases2(): TestCase[] {
+  return [
+  {
+    id: "CURR_001",
+    scenario: "Select a valid country from the dropdown",
+    type: "positive",
+    description: "Verify that selecting a valid country displays the correct currency",
+    expectedResult: "The currency field should display the correct currency code (e.g., INR for India)",
+    priority: "high",
+    steps: [
+      "Render the country-currency selector component",
+      "Click on the country dropdown",
+      "Search and select 'India'",
+      "Verify that 'INR' is displayed in the currency field"
+    ]
+  },
+  {
+    id: "CURR_002",
+    scenario: "Clear the selected country",
+    type: "positive",
+    description: "Verify that clearing the selected country resets the currency field",
+    expectedResult: "Currency field should display placeholder or empty value (e.g., '---')",
+    priority: "medium",
+    steps: [
+      "Select any country (e.g., 'Japan')",
+      "Clear the selection from the dropdown",
+      "Check that the currency display shows '---'"
+    ]
+  },
+  {
+    id: "CURR_003",
+    scenario: "Search for a country in the dropdown",
+    type: "positive",
+    description: "Verify that the dropdown filters countries based on search input",
+    expectedResult: "Matching countries should appear as the user types",
+    priority: "medium",
+    steps: [
+      "Click on the dropdown",
+      "Type 'Can' in the search input",
+      "Verify that 'Canada' appears in the results",
+      "Select 'Canada' and confirm 'CAD' is displayed"
+    ]
+  },
+  {
+    id: "CURR_004",
+    scenario: "Select a country not present in the list",
+    type: "negative",
+    description: "Verify that user cannot select an invalid or non-listed country",
+    expectedResult: "Dropdown should not allow manual entry or invalid country selection",
+    priority: "high",
+    steps: [
+      "Click on the dropdown",
+      "Try typing 'Wakanda' and pressing Enter",
+      "Verify that no currency is selected or shown"
+    ]
+  },
+  {
+    id: "CURR_005",
+    scenario: "Load component with no country selected initially",
+    type: "positive",
+    description: "Verify that the currency display shows placeholder when no country is selected",
+    expectedResult: "Currency field should display '---'",
+    priority: "low",
+    steps: [
+      "Render the component",
+      "Verify that no country is selected by default",
+      "Check that currency field shows '---'"
+    ]
+  },
+  {
+    id: "CURR_006",
+    scenario: "Simulate slow API or heavy DOM loading (for dynamic data scenario)",
+    type: "negative",
+    description: "Verify that UI does not break or misbehave while waiting for data",
+    expectedResult: "Dropdown remains accessible and shows loading indicator or fallback",
+    priority: "medium",
+    steps: [
+      "Throttle network to slow 3G using dev tools",
+      "Render the component that fetches countries from API",
+      "Ensure component doesn't crash and user can retry later"
+    ]
+  },
+  {
+    id: "CURR_007",
+    scenario: "Verify dropdown supports keyboard navigation",
+    type: "positive",
+    description: "Ensure users can navigate and select options using keyboard",
+    expectedResult: "User should be able to focus, arrow down, and select an option using keyboard",
+    priority: "medium",
+    steps: [
+      "Tab to the country selector input",
+      "Press down arrow to navigate through list",
+      "Press Enter to select a country",
+      "Verify that the corresponding currency is displayed"
+    ]
+  },
+  {
+    id: "CURR_008",
+    scenario: "Test special characters in search",
+    type: "negative",
+    description: "Verify system behavior when user enters special characters in search box",
+    expectedResult: "Search should not crash and should return no results or match if exists",
+    priority: "low",
+    steps: [
+      "Click on country dropdown",
+      "Type characters like '@#$%'",
+      "Verify no crash and an appropriate 'no results' message"
+    ]
+  }
+]
+
+}
+
 export function createTimeTestCases(): TestCase[] {
   return [
   {

@@ -158,6 +158,14 @@ export const automationTopics: AutomationTopic[] = [
     category: "Interaction"
   },
   {
+  id: "links",
+  title: "Anchor Tag Navigation",
+  aliases: ["Links", "In-Page Navigation", "External Links", "Href"],
+  description: "Test different types of anchor tag navigations including in-page, external, new tab/window, and broken links.",
+  path: "/explore/links",
+  category: "Navigation"
+},
+  {
     id: "fileupload",
     title: "File Upload",
     aliases: ["Choose File", "Browse", "Upload"],

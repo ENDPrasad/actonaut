@@ -1,7 +1,7 @@
 export const conceptsData = {
-  anchor: {
-    name: "anchor",
-    type: "anchor",
+  links: {
+    name: "link",
+    type: "link",
     overview:
       "The <a> (anchor) tag defines a hyperlink, allowing navigation between documents or triggering actions like email or file downloads.",
     syntaxCode: '<a href="https://example.com">Visit Example</a>',
