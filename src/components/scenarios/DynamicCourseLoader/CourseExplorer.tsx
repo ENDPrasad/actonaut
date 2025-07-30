@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext, createContext } from 'react';
+import { useEffect, useRef, useState, useContext, createContext } from 'react';
 import { Card, CardContent, Typography, Box, CircularProgress } from '@mui/material';
 
 // Sample course data context
@@ -78,10 +78,12 @@ const LazyCourseList: React.FC = () => {
       container.addEventListener('scroll', handleScroll);
       return () => container.removeEventListener('scroll', handleScroll);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleCourses, loading]);
 
   useEffect(() => {
     loadMoreCourses();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

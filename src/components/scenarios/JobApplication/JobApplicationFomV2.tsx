@@ -1,4 +1,4 @@
-import React, { useState, type ChangeEvent } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import {
   Box,
   Button,
@@ -325,7 +325,7 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
         aria-required
         name="rating"
         value={formData.rating}
-        onChange={(e, val) => setFormData(prev => ({ ...prev, rating: val as number }))}
+        onChange={(_e, val) => setFormData(prev => ({ ...prev, rating: val as number }))}
         min={0}
         max={10}
         valueLabelDisplay="on"

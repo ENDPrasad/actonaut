@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TextField, Typography } from '@mui/material';
 
 const HtmlEditorPreview: React.FC = () => {
