@@ -26,8 +26,14 @@ export default function EmploymentHistory() {
     endDate: "",
   });
   const [overlapWarning, setOverlapWarning] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(true)
 
   const handleAddEmployment = () => {
+    if(!(newEmployment.company || newEmployment.startDate || newEmployment.endDate)){ 
+      setIsEmpty(true)
+      return
+     }
+     setIsEmpty(false)
     const start = new Date(newEmployment.startDate);
     const end = new Date(newEmployment.endDate);
 
@@ -78,7 +84,13 @@ export default function EmploymentHistory() {
         <DialogTitle>Add Employment</DialogTitle>
         <DialogContent>
           <Stack spacing={2} mt={1}>
+            {isEmpty && (
+              <Alert severity="warning">
+                Fill all the mandatory fields!!
+              </Alert>
+            )}
             <TextField
+            required
               label="Company Name"
               value={newEmployment.company}
               onChange={(e) =>
@@ -87,6 +99,7 @@ export default function EmploymentHistory() {
               fullWidth
             />
             <TextField
+            required
               type="date"
               label="Start Date"
               InputLabelProps={{ shrink: true }}
@@ -97,6 +110,7 @@ export default function EmploymentHistory() {
               fullWidth
             />
             <TextField
+            required
               type="date"
               label="End Date"
               InputLabelProps={{ shrink: true }}
@@ -116,6 +130,7 @@ export default function EmploymentHistory() {
             <Button variant="contained" onClick={handleAddEmployment}>
               Add
             </Button>
+            
           </Stack>
         </DialogContent>
       </Dialog>

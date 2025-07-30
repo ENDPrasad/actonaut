@@ -167,9 +167,10 @@ export default function EmployeeTable() {
 
       <Dialog open={isDialogOpen} onClose={handleDialogClose} fullWidth>
         <DialogTitle>{selected?.id ? "Edit Employee" : "Add Employee"}</DialogTitle>
-        <DialogContent className="flex flex-col gap-4">
+        <DialogContent  className="flex flex-col gap-6">
           {(["name", "position", "department", "location", "email"] as (keyof Employee)[]).map((field) => (
             <TextField
+            required
               key={field}
               label={field.charAt(0).toUpperCase() + field.slice(1)}
               value={selected?.[field] || ""}

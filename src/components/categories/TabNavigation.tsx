@@ -26,11 +26,11 @@ export function TabNavigation({ tabs, defaultActiveTab, onTabChange }: TabNaviga
     setActiveTab(newValue)
     window.location.hash = newValue // updates the URL with #tabId
     onTabChange?.(newValue)
+    window.scrollTo(0, 0)
   }
 
   // ✅ When user navigates directly to a URL with #tabId
   useEffect(() => {
-    window.scrollTo(0, 0);
     const onHashChange = () => {
       const tabId = window.location.hash.replace("#", "")
       if (tabId && tabId !== activeTab && tabs.some(tab => tab.id === tabId)) {

@@ -8,11 +8,13 @@ import HomePage from './concepts/ExamplePage';
 import ConceptOutlinePage from './pages/ConceptPage/ConceptPage';
 import { ChallengesPage } from './pages/challenges/ChallengesPage';
 import { ChallengePage } from './pages/challenges/ChallengePage';
+import ScrollToTop from './components/smallComponents/ScrollToTop';
 
 function App() {
 
   return (
     <>
+    <ScrollToTop />
       <Routes>
         <Route path='/' element={<LandingPage />}/>
         <Route path='/explore' element={<CategoriesPage />}/>

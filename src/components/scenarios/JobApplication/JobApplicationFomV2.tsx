@@ -57,7 +57,7 @@ const initialForm: FormData = {
   languages: [],
   salutation: '',
   jobRoles: [],
-  rating: 5,
+  rating: 0,
   skills: [],
   resume: null,
   availableDate: '',
@@ -160,8 +160,9 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
       <Typography variant="h5">Personal Details</Typography>
 
       <Box className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <TextField label="Salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} />
+        <TextField required label="Salutation" name="salutation" value={formData.salutation} onChange={handleInputChange} />
         <TextField
+        required
           label="First Name"
           name="firstName"
           value={formData.firstName}
@@ -171,6 +172,7 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
           helperText={formErrors.firstName}
         />
         <TextField
+        required
           label="Last Name"
           name="lastName"
           value={formData.lastName}
@@ -180,6 +182,7 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
           helperText={formErrors.lastName}
         />
         <TextField
+        required
           label="Email"
           name="email"
           value={formData.email}
@@ -189,6 +192,7 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
           helperText={formErrors.email}
         />
         <TextField
+        required
           label="Mobile"
           name="mobile"
           value={formData.mobile}
@@ -200,7 +204,7 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
       </Box>
 
       <FormControl>
-        <FormLabel>Gender</FormLabel>
+        <FormLabel>Gender*</FormLabel>
         <RadioGroup row name="gender" value={formData.gender} onChange={handleInputChange}>
           <FormControlLabel value="Male" control={<Radio />} label="Male" />
           <FormControlLabel value="Female" control={<Radio />} label="Female" />
@@ -209,7 +213,9 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
         </RadioGroup>
       </FormControl>
 
-      <FormGroup row>
+      <FormGroup row className='flex flex-col gap-2'>
+        <FormLabel>Known Languages*</FormLabel> 
+
         {['English', 'Hindi', 'Other'].map((lang) => (
           <FormControlLabel
             key={lang}
@@ -233,7 +239,7 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
       </FormGroup>
 
       <Typography variant="h6">Resume</Typography>
-      <input type="file" accept=".pdf,.docx" onChange={handleFileChange} />
+      <input required type="file" accept=".pdf,.docx" onChange={handleFileChange} />
       {formData.resume && (
   <Box sx={{ mt: 1 }}>
     <Typography fontWeight="bold">Resume:</Typography>
@@ -241,6 +247,7 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
       href={URL.createObjectURL(formData.resume)}
       target="_blank"
       rel="noopener noreferrer"
+      className='hover:underline'
     >
       {formData.resume.name}
     </a>
@@ -249,6 +256,7 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
 
 
       <TextField
+      required
   fullWidth
   variant="outlined"
   label="Add a Skill"
@@ -287,8 +295,9 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
 
       <Typography variant="h6">Job Roles</Typography>
       <FormControl fullWidth>
-        <InputLabel>Roles</InputLabel>
+        <InputLabel>Roles*</InputLabel>
         <Select
+        required
           multiple
           name="jobRoles"
           value={formData.jobRoles}
@@ -313,6 +322,7 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
 
       <Typography variant="h6">Self Rating</Typography>
       <Slider
+        aria-required
         name="rating"
         value={formData.rating}
         onChange={(e, val) => setFormData(prev => ({ ...prev, rating: val as number }))}
@@ -324,26 +334,30 @@ const handleMultiSelectChange = (e: SelectChangeEvent<string[]>) => {
 
       <Box className='flex gap-4 py-4'>
         <TextField
+        required
         type="date"
         name="availableDate"
         value={formData.availableDate}
         onChange={handleInputChange}
         label="Available Date"
+        style={{width: '15rem'}}
         InputLabelProps={{ shrink: true }}
       />
       <TextField
+      required
         type="time"
         name="availableTime"
         value={formData.availableTime}
         onChange={handleInputChange}
         label="Available Time"
+        style={{width: '15rem'}}
         InputLabelProps={{ shrink: true }}
       />
       </Box>
 
       <FormControlLabel
         control={
-          <Checkbox checked={formData.termsAccepted} onChange={handleInputChange} name="termsAccepted" />
+          <Checkbox required checked={formData.termsAccepted} onChange={handleInputChange} name="termsAccepted" />
         }
         label="I accept terms and conditions"
       />

@@ -1,5 +1,5 @@
 import type { TestCase } from "../../../interfaces/interfaces";
-import { createButtonTestCases, createCheckBoxTestCases, createDateTestCases, createDragAndDropTestCases, createDropDownTestCases, createFormTestCases, createIFrameTestCases, createKeyboardTestcases, createModalWindowTestCases, createNotificationTestCases, createRadioTestCases, createScrollTestcases, createTableTestCases, createTimeTestCases } from "./TestCasesFactory";
+import { createButtonTestCases, createCheckBoxTestCases, createDateTestCases, createDragAndDropTestCases, createDropDownTestCases2, createFormTestCases, createIFrameTestCases, createKeyboardTestcases, createModalWindowTestCases, createNotificationTestCases, createRadioTestCases, createScrollTestcases, createTableTestCases, createTimeTestCases } from "./TestCasesFactory";
 
 
 export function getTestCasesById(id: string): TestCase[] | null {
@@ -8,7 +8,7 @@ export function getTestCasesById(id: string): TestCase[] | null {
     "button": createButtonTestCases(),
     "form": createFormTestCases(),
     "radio": createRadioTestCases(),
-    "dropdown": createDropDownTestCases(),
+    "dropdown": createDropDownTestCases2(),
     "iframe": createIFrameTestCases(),
     "modal": createModalWindowTestCases(),
     "draganddrop": createDragAndDropTestCases(),

@@ -40,12 +40,13 @@ export default function ProfileSuggestionV2() {
     setSuggestions((prev) => prev.filter((s) => s.id !== id));
   };
 
+
   return (
     <div className="p-6">
       <h2 className="text-xl font-semibold mb-4">Suggestions for you</h2>
 
       <div className="flex flex-wrap gap-4">
-        {suggestions.map((suggestion) => (
+        {suggestions.length > 0 ? suggestions.map((suggestion) => (
           <SuggestionCardWithFollow
             key={suggestion.id}
             // initiallyFollowing={parseInt(suggestion.id) === 3 && isFollowing}
@@ -58,7 +59,7 @@ export default function ProfileSuggestionV2() {
             // }
             onRemove={() => handleRemove(suggestion.id)}
           />
-        ))}
+        )): <div className="p-8">No suggestions at the moment</div>}
       </div>
     </div>
   );
