@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Autocomplete, TextField, Typography } from '@mui/material'
 
 const countryCurrencyMap: Record<string, string> = {
@@ -43,7 +43,7 @@ export default function CountryCurrencySelector() {
       <Autocomplete
         options={countries}
         value={selectedCountry}
-        onChange={(e, newVal) => setSelectedCountry(newVal)}
+        onChange={(_e, newVal) => setSelectedCountry(newVal)}
         renderInput={(params) => <TextField {...params} label="Select Country" />}
       />
       <Typography variant="h6" className="mt-4">

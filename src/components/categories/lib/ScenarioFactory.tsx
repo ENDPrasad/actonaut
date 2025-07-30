@@ -1,5 +1,4 @@
 import type { PracticeScenario } from "../../../interfaces/interfaces";
-import { InputValidationScenario } from "../../scenarios/InputScenario";
 import { BasicDragDropScenario } from "../../scenarios/DragAndDropScenarios";
 import UserFollowCard from "../../scenarios/LinkedInProfile/UserFollowCard";
 // import ProfileSuggestion from "../../scenarios/LinkedInProfile/ProfileSuggestion"
@@ -143,21 +142,6 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
       siteContent: JobApplicationFormV2(),
     },
 
-    "input-validation": {
-      id: "input-validation",
-      title: "Input Validation Testing",
-      description: "Master testing input field validations and error handling",
-      category: "Input",
-      difficulty: "intermediate",
-      learningObjectives: [
-        "Test required field validations",
-        "Handle input format validations",
-        "Verify error message displays",
-        "Test minimum/maximum length constraints",
-        "Practice validation state automation",
-      ],
-      siteContent: InputValidationScenario(),
-    },
     datepicker: {
       id: "date-picker",
       title: "Date Picker Automation",

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Typography, Link as MUILink, IconButton } from '@mui/material'
 import {
   Facebook,

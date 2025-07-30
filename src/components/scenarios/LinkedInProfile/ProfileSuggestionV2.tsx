@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SuggestionCardWithFollow from "./UserFollowCardV2";
 
 const suggestionsData = [
