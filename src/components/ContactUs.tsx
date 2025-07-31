@@ -1,5 +1,5 @@
 import { Button } from "@mui/material"
-import { PRIMARY_BG_COLOR, PRIMARY_COLOR } from "../helper/contants"
+import { PRIMARY_BG_COLOR, PRIMARY_COLOR, PRIMARY_COLOR_LIGHT } from "../helper/contants"
 import CustomInput from "./smallComponents/CustomInput"
 import CustomTextArea from "./smallComponents/CustomTextArea"
 import SubHeader from "./smallComponents/SubHeader"
@@ -47,7 +47,7 @@ function ContactUs() {
 
 
   return (
-    <div id="contact-us" style={{backgroundColor: PRIMARY_COLOR, color: PRIMARY_BG_COLOR}} className="p-8">
+    <div id="contact-us" style={{backgroundColor: PRIMARY_COLOR_LIGHT, color: PRIMARY_BG_COLOR}} className="p-8">
                 <SubHeader text="Share. Suggest. Shape."/>
         <div className="flex px-8 md:px-32 py-12 gap-4">
             <div className="flex-1 flex flex-col gap-2">

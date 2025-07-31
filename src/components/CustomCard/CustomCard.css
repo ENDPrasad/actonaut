@@ -1,8 +1,9 @@
 .custom-card {
-    background-image: url('../../assets/background-design.svg') !important;
+    /* background-image: url('../../assets/background-design.svg') !important;
     background-position: center;
     background-position-x: right;
     background-blend-mode: hard-light;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+background: #F5F5F5 !important;
 }

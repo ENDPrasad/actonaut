@@ -9,7 +9,7 @@ import './HeroSection.css'
 function HeroSection() {
 
   return (
-      <Box id='hero-section' component="main" className='w-full hero-section' style={{height: 'calc(100dvh - 10rem)'}}>
+      <Box id='hero-section' component="main" className='w-full hero-section' style={{height: 'calc(100dvh - 6rem)'}}>
         <div className='h-full flex flex-col justify-center align-middle mx-12'>
           <div className='flex gap-3 justify-center align-middle'>
             <HeaderText text='Learn'/>
@@ -18,7 +18,7 @@ function HeroSection() {
             <Dot size='3'/>
             <HeaderText text='Automate'/>
         </div>
-        <div className='px-6'>
+        <div className='lg:px-75 px-6'>
           <p className='text-center'>A complete platform to learn automation concepts, solve real-world problems, and follow industry best practices.</p>
         </div>
         <div className='flex gap-3 justify-center mt-6'>
