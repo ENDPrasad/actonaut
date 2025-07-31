@@ -6,7 +6,7 @@ import type { ConceptPageData } from "../interfaces/interfaces"
 
 // Example data for the button concept page
 const buttonConceptData: ConceptPageData = {
-    breadcrumbs: [{ label: "Categories", href: "/explore" }, { label: "button" }],
+    breadcrumbs: [{ label: "explore", href: "/explore" }, { label: "button" }],
     tabs: [
         {
             id: "concept",

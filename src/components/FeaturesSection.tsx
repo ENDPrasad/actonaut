@@ -13,7 +13,7 @@ function FeaturesSection() {
   return (
     <div id="features" className='px-8 py-16' style={{backgroundColor: mainColor, color: textColor}}>
         <SubHeader text="features"/>
-        <div className="flex justify-around align-middle my-6 gap-3 pb-8">
+        <div className="flex justify-around align-middle my-6 gap-3 pb-8 flex-col sm:flex-row">
             <Feature image={testFlask} altText="Practice real world scenarios image" description="Practice every possible real world scenario" />
             <Feature image={code} altText="Explanation with sample snippets image" description="Simple explanation and helpful code snippets" />
             <Feature image={challenge} altText="Challenges image" description="Challenges & Interview Questions" />

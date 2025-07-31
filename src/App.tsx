@@ -9,6 +9,7 @@ import ConceptOutlinePage from './pages/ConceptPage/ConceptPage';
 // import { ChallengesPage } from './pages/challenges/ChallengesPage';
 // import { ChallengePage } from './pages/challenges/ChallengePage';
 import ScrollToTop from './components/smallComponents/ScrollToTop';
+import ChallengesPage from './pages/challenges/ChallengesPage';
 
 function App() {
 
@@ -20,8 +21,8 @@ function App() {
         <Route path='/explore' element={<CategoriesPage />}/>
         <Route path='/example' element={<HomePage />}/>
         <Route path='/explore/:slug' element={<ConceptOutlinePage><ConceptPage /></ConceptOutlinePage>}/>
-        {/* <Route path="/challenges" element={<ChallengesPage />} />
-            <Route path="/challenge/:challengeId" element={<ChallengePage />} /> */}
+        <Route path="/challenges" element={<ChallengesPage />} />
+            {/* <Route path="/challenge/:challengeId" element={<ChallengePage />} /> */}
       </Routes>
     </>
   )

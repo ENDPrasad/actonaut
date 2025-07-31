@@ -6,8 +6,12 @@ function Footer() {
 
   return (
     <Box component={'footer'} sx={{backgroundColor: SECONDARY_BG_COLOR}}>
+        <hr style={{color: PRIMARY_COLOR}} />
         <div className="p-16 flex justify-between align-top">
-            <div>Actonaut</div>
+            <div className="flex align-top justify-start">
+                    <img width={'150px'} src='/cnarios.svg' alt='cnarios logo'/>
+
+            </div>
             <div className="flex gap-12">
                 <div className="flex flex-col gap-2">
                     <Link to=''>Iframes</Link>

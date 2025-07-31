@@ -28,9 +28,12 @@ export default function NavBar() {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        <Link to={'/'}>Actonaut</Link>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
+      <Typography variant="h6" sx={{ my: 2, textAlign: 'center' }}>
+        <Link to={'/'} className='flex align-middle justify-center'>
+                    <img width={'150px'} src='/cnarios.svg' alt='cnarios logo'/>
+
+        </Link>
       </Typography>
       <Divider />
       <List>
@@ -49,7 +52,7 @@ export default function NavBar() {
     <Box sx={{ display: 'flex', marginBottom: '4rem' }}>
       <CssBaseline />
       <AppBar component="nav" sx={{backgroundColor: theme.palette.background.default, color: theme.palette.text.primary}}>
-        <Toolbar sx={{padding: '0 32px !important'}}>
+        <Toolbar sx={{padding: '12px 32px !important'}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -64,7 +67,9 @@ export default function NavBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: theme.palette.primary.main, fontWeight: '600' }}
           >
-                    <Link to={'/'}>Actonaut</Link>
+                    <Link to={'/'}>
+                    <img width={'150px'} src='/cnarios.svg' alt='cnarios logo'/>
+                    </Link>
 
           </Typography>
           <Box className='gap-4' sx={{ display: { xs: 'none', sm: 'flex' } }}>
