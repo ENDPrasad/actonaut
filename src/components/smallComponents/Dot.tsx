@@ -1,11 +1,11 @@
 
 import { Box } from '@mui/material';
-import theme from '../../../theme';
+import { PRIMARY_COLOR } from '../../helper/contants';
 
 function Dot({size, text}:{size: string, text?: string}) {
 
   return (
-    <Box className={`w-${size} h-${size} rounded-full self-center`} sx={{bgcolor: theme.palette.primary.main}}>{text}</Box>
+    <Box className={`w-${size} h-${size} rounded-full self-center`} sx={{bgcolor: PRIMARY_COLOR}}>{text}</Box>
   )
 }
 

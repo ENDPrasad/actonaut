@@ -17,7 +17,7 @@ function Step({step, image, heading, description, altText, reverse=false}: IStep
     <div className={`flex gap-6`}>
               <StepCount step={step}/>
               <div className="flex flex-col gap-1">
-                <Typography sx={{fontWeight:'600'}}>{heading}</Typography>
+                <Typography sx={{fontWeight:'600', fontSize: '1.5rem'}}>{heading}</Typography>
                 <p className="text-sm">{description}</p>
               </div>
             </div>

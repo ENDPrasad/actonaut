@@ -20,7 +20,7 @@ export const COLORS = {
     main: '#d32f2f',
   },
   background: {
-    default: '#f5f5f5',
+    default: '#f6f4f0',
     paper: '#ffffff',
 
   },

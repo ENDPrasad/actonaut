@@ -1,6 +1,6 @@
-import Steps from "./smallComponents/Steps"
-import SubHeader from "./smallComponents/SubHeader"
-
+import Steps from "../smallComponents/Steps"
+import SubHeader from "../smallComponents/SubHeader"
+import './HowItWorks.css'
 
 function HowItWorks() {
 
