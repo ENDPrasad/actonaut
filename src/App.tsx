@@ -7,7 +7,6 @@ import { ConceptPage } from './components/categories/ConceptPage';
 import HomePage from './concepts/ExamplePage';
 import ConceptOutlinePage from './pages/ConceptPage/ConceptPage';
 import ChallengesPage from './pages/challenges/ChallengesPage';
-import BlogFactory from './components/blogs/BlogFactory';
 import BlogPage from './components/blogs/pages/BlogPage';
 import Blogs from './components/blogs/pages/Blogs';
 
