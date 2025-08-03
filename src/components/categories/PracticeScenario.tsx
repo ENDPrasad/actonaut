@@ -11,6 +11,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Alert,
 } from "@mui/material"
 import { ExpandMore, CheckCircle } from "@mui/icons-material"
 import type { PracticeScenario } from "../../interfaces/interfaces"
@@ -43,6 +44,7 @@ export function PracticeScenarioComponent({ scenario }: PracticeScenarioProps) {
           <Chip label={scenario.category} variant="outlined" size="small" />
         </Box>
         <Typography className="text-gray-600 mb-4">{scenario.description}</Typography>
+        <Alert severity="info" className="my-2">Try to read the testcases to understand the scenrario better</Alert>
       </Box>
 
       {/* Practice Site */}

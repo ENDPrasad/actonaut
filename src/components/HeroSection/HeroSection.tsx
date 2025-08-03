@@ -4,12 +4,12 @@ import { Box } from '@mui/material';
 import Dot from '../smallComponents/Dot';
 import HeaderText from '../smallComponents/HeaderText';
 import CustomButton from '../smallComponents/CustomButton';
-import './HeroSection.css'
+import { BACKGROUND_GRADIENT } from '../../helper/contants';
 
 function HeroSection() {
 
   return (
-      <Box id='hero-section' component="main" className='w-full hero-section' style={{height: 'calc(100dvh - 6rem)'}}>
+      <Box id='hero-section' component="main" className='w-full hero-section' style={{height: 'calc(100dvh - 6rem)'}} sx={{backgroundColor: BACKGROUND_GRADIENT}}>
         <div className='h-full flex flex-col justify-center align-middle mx-12'>
           <div className='flex gap-3 justify-center align-middle'>
             <HeaderText text='Learn'/>

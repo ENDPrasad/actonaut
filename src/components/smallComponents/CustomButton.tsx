@@ -14,9 +14,11 @@ function CustomButton({title, type, to}: ICustomButton) {
     const isContained = type === 'contained'
 
   return (
+    <Link to={to}>
     <Button variant={type} sx={{bgcolor: `${isContained ? mainColor: PRIMARY_BG_COLOR}`, borderRadius: '10000px', padding: '0.6rem 1.2rem', border: `2px solid ${mainColor}`, color:`${!isContained && mainColor}`, textTransform: 'none'}} >
-        <Link to={to}>{title}</Link>
+        {title}
     </Button>
+    </Link>
   )
 }
 

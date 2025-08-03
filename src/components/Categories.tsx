@@ -4,14 +4,21 @@ import {
   PRIMARY_COLOR,
 } from "../helper/contants";
 import SearchResult from "./SearchResult";
+import { Link } from "react-router";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 function Categories() {
   return (
     <>
       <Box className="flex flex-col w-full">
+        <div className="py-8 px-16">
+          <Link to='/'>
+          <ArrowBackIcon sx={{color: PRIMARY_COLOR}} />
+        </Link>
+        </div>
         <Box
           component={"header"}
-          className="py-8 flex flex-col align-middle justify-center text-center gap-4"
+          className="py-4 flex flex-col align-middle justify-center text-center gap-4"
         >
           <HeaderText
             text="What do you want to explore today?"

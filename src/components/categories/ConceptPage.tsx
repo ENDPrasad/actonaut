@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 import { ConceptPageLayout } from "./ConceptPageLayout"
 import { createConceptPageData } from "./lib/conceptDataFactory"
 import { conceptsData } from "../../assets/data/ConceptPagesData"
-// This would typically come from a database or API
 
 
 export function ConceptPage() {
@@ -24,7 +23,8 @@ export function ConceptPage() {
     concept.name,
     concept.overview,
     concept.syntaxCode,
-    concept.useCases
+    concept.useCases,
+    concept.importantNote
   )
 
   return <ConceptPageLayout data={pageData} />

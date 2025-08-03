@@ -1,0 +1,6 @@
+code.language-mono#codeBlock{
+          font-family: 'Courier New', Courier, monospace !important;
+          margin: 0;
+          white-space: "pre-wrap";
+          word-break: "break-all";
+        }

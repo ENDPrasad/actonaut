@@ -1,15 +1,14 @@
 
 import { Box } from '@mui/material';
-// import theme from '../../theme';
-import './HeroSection.css'
 import herosSectionSVG from '../../assets/hero-section.svg'
 import HeaderText from '../smallComponents/HeaderText';
 import CustomButton from '../smallComponents/CustomButton';
+import { BACKGROUND_GRADIENT } from '../../helper/contants';
 
 function HeroSectionV2() {
 
   return (
-      <Box id='hero-section' component="main" className='w-full hero-section py-10' style={{height: 'calc(100dvh - 6rem)'}}>
+      <Box id='hero-section' component="main" className='w-full hero-section py-10' style={{height: 'calc(100dvh - 6rem)'}} sx={{backgroundColor: BACKGROUND_GRADIENT}}>
         <div className='h-full flex align-middle justify-center'>
             <div className='flex-1 mx-24 flex flex-col justify-center align-center'>
                 <div className='flex flex-col gap-3 justify-center align-middle leading-1'>
