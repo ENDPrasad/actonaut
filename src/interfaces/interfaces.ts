@@ -24,11 +24,11 @@ export interface ConceptPageData {
   breadcrumbs: BreadcrumbItem[]
   title: string
   tabs: TabItem[]
-  activeTab?: string
+  activeTab?: string,
 }
 
 export interface ContentSection {
-  title: string
+  title?: string
   content: React.ReactNode
 }
 

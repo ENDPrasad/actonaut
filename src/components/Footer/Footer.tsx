@@ -1,15 +1,17 @@
 import { Link } from "react-router"
-import { PRIMARY_COLOR, SECONDARY_BG_COLOR } from "../helper/contants"
+import { BACKGROUND_GRADIENT, PRIMARY_COLOR, scrollToTop, YOUTUBE_LINK } from "../../helper/contants"
 import { Box } from "@mui/material"
 
 function Footer() {
 
   return (
-    <Box component={'footer'} sx={{backgroundColor: SECONDARY_BG_COLOR}}>
+    <Box component={'footer'} sx={{backgroundColor: BACKGROUND_GRADIENT}}>
         <hr style={{color: PRIMARY_COLOR}} />
         <div className="p-16 flex justify-between align-top">
             <div className="flex align-top justify-start">
+                    <Link to={'/'} onClick={() => scrollToTop()}>
                     <img width={'150px'} src='/cnarios.svg' alt='cnarios logo'/>
+                    </Link>
 
             </div>
             <div className="flex gap-12">
@@ -21,7 +23,7 @@ function Footer() {
                 <div className="flex flex-col gap-2">
                     <Link to=''>LinkedIn</Link>
                     <Link to=''>Instagram</Link>
-                    <Link to=''>Youtube</Link>
+                    <Link to={YOUTUBE_LINK}>Youtube</Link>
                 </div>
                 
             </div>

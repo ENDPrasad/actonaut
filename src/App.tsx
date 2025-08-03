@@ -6,16 +6,12 @@ import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
 import { ConceptPage } from './components/categories/ConceptPage';
 import HomePage from './concepts/ExamplePage';
 import ConceptOutlinePage from './pages/ConceptPage/ConceptPage';
-// import { ChallengesPage } from './pages/challenges/ChallengesPage';
-// import { ChallengePage } from './pages/challenges/ChallengePage';
-import ScrollToTop from './components/smallComponents/ScrollToTop';
 import ChallengesPage from './pages/challenges/ChallengesPage';
 
 function App() {
 
   return (
     <>
-    <ScrollToTop />
       <Routes>
         <Route path='/' element={<LandingPage />}/>
         <Route path='/explore' element={<CategoriesPage />}/>

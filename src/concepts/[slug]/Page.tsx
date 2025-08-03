@@ -14,6 +14,8 @@ const conceptsData = {
       "Applying CSS styles to multiple elements",
       "Creating semantic sections with CSS classes",
     ],
+    importantNote: []
+
   },
   "css-flexbox": {
     name: "flexbox",
@@ -26,6 +28,7 @@ const conceptsData = {
       "Distributing space between items",
       "Creating equal-height columns",
     ],
+    importantNote: []
   },
 }
 
@@ -42,7 +45,7 @@ export default function ConceptPage({ params }: ConceptPageProps) {
     return <div className="py-16">Concept not found</div>
   }
 
-  const pageData = createConceptPageData(concept.name, concept.overview, concept.syntaxCode, concept.useCases)
+  const pageData = createConceptPageData(concept.name, concept.overview, concept.syntaxCode, concept.useCases, concept.importantNote)
 
   return <ConceptPageLayout data={pageData} />
 }

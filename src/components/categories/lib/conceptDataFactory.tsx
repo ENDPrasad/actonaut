@@ -9,6 +9,7 @@ import { TestCasesTable } from "../TestCasesTable"
 import { PracticeScenarioComponent } from "../PracticeScenario"
 import { getScenarioById } from "./ScenarioFactory"
 import { getTestCasesById } from "./TestCaseSelection"
+import ImportantNoteList from "../ImportantNotes"
 
 // Factory function to create concept page data
 export function createConceptPageData(
@@ -16,23 +17,15 @@ export function createConceptPageData(
   overview: string,
   syntaxCode: string,
   useCases: string[],
+  importantNote: string[],
   scenarioId?: string,
   additionalSections?: ContentSection[],
 ): ConceptPageData {
   // Get the appropriate scenario
   const scenario = scenarioId ? getScenarioById(scenarioId) : getScenarioById(conceptName)
 
-  // Fallback scenarios if no specific scenario provided
-  const defaultScenarioId =
-    conceptName === "button"
-      ? "button-basic"
-      : conceptName === "input"
-        ? "input-basic"
-        : conceptName === "dragdrop"
-          ? "dragdrop-basic"
-          : null
 
-  const finalScenario = scenario || (defaultScenarioId ? getScenarioById(defaultScenarioId) : null)
+  const finalScenario = scenario || (scenarioId ? getScenarioById(scenarioId) : null)
 
   const testCases = getTestCasesById(conceptName)
 //   const solutions = conceptName === "button" ? createButtonSolutions() : createFormSolutions()
@@ -53,8 +46,14 @@ export function createConceptPageData(
 
                     <ContentSectionComponent
                         section={{
-                            title: "HTML Syntax",
+                            title: "Syntax",
                             content: <CodeBlock code={syntaxCode} />,
+                        }} />
+
+                    <ContentSectionComponent
+                        section={{
+                            // title: "Important Note",
+                            content: <ImportantNoteList items={importantNote} />,
                         }} />
 
                     <ContentSectionComponent

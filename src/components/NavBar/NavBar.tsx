@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import { Menu } from '@mui/icons-material';
 import theme from '../../../theme';
 import {HashLink as Link} from 'react-router-hash-link';
-import './NavBar.css'
+import { scrollToTop } from '../../helper/contants';
 
 
 const drawerWidth = 240;
@@ -30,7 +30,7 @@ export default function NavBar() {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
       <Typography variant="h6" sx={{ my: 2, textAlign: 'center' }}>
-        <Link to={'/'} className='flex align-middle justify-center'>
+        <Link to={'/'} className='flex align-middle justify-center' onClick={scrollToTop}>
                     <img width={'150px'} src='/cnarios.svg' alt='cnarios logo'/>
 
         </Link>
@@ -49,7 +49,7 @@ export default function NavBar() {
   );
 
   return (
-    <Box sx={{ display: 'flex', marginBottom: '4rem' }}>
+    <Box sx={{ display: 'flex', marginBottom: '4rem'}}>
       <CssBaseline />
       <AppBar component="nav" sx={{backgroundColor: theme.palette.background.default, color: theme.palette.text.primary}}>
         <Toolbar sx={{padding: '12px 32px !important'}}>
@@ -67,16 +67,21 @@ export default function NavBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: theme.palette.primary.main, fontWeight: '600' }}
           >
-                    <Link to={'/'}>
+                    <Link to={'/'} smooth onClick={scrollToTop}>
                     <img width={'150px'} src='/cnarios.svg' alt='cnarios logo'/>
                     </Link>
 
           </Typography>
           <Box className='gap-4' sx={{ display: { xs: 'none', sm: 'flex' } }}>
             {navItems.map((item) => (
-              <Link to={`#${item.replaceAll(' ', '-').replace('?', '').toLocaleLowerCase()}`} key={item}>
-                {item}
-              </Link>
+                <Link
+  to={`/#${item.replaceAll(' ', '-').replace('?', '').toLocaleLowerCase()}`}
+  key={item}
+  smooth
+  className="text-base border-b-2 border-transparent hover:border-[#4052B5] transition duration-300"
+>
+  {item}
+</Link>
             ))}
           </Box>
         </Toolbar>

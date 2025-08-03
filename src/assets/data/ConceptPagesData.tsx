@@ -11,7 +11,10 @@ export const conceptsData = {
       "Opening external links",
       "Triggering email or phone apps",
       "Initiating file downloads",
-    ],
+    ], importantNote: [
+      'Finding Links: We should target anchor tags(<a href="">Click here</a>)',
+      'Some times button will also acts as link and they will be writing the navigation logic in script file'
+    ]
   },
   button: {
     name: "button",
@@ -24,7 +27,10 @@ export const conceptsData = {
       "Trigger Action → Save settings, Start process (e.g., generate report)",
       "Remove / Delete → Remove item from cart, Delete post",
       "Follow / Like / Subscribe → Social media platforms (e.g., follow button on LinkedIn)"
-    ],
+    ], importantNote: [
+      'Finding button: We should target button tag (because it is the standard way for defining a button)',
+      'Sometimes div element will also acts as a button'
+    ]
   },
   form: {
   name: "form",
@@ -38,7 +44,9 @@ export const conceptsData = {
     "Feedback / Contact → Allow users to submit queries or reviews",
     "Checkout / Payment → Gather shipping and billing info",
     "Search → Submit keywords for product or content lookup"
-  ],
+  ], importantNote: [
+    'We may find form tag or sometimes they will use simple div to wrap all the input elements'
+  ]
   },
   select: {
     name: "select",
@@ -49,7 +57,10 @@ export const conceptsData = {
     useCases: [
       "Providing dropdown selections",
       "Allowing multi-select with `multiple` attribute",
-    ],
+    ], importantNote: [
+      'We may find select tag as dropdown and option tag as values or simply a div',
+      'If we have select tag then we can use Select class in Selenium'
+    ]
   },
   checkbox: {
     name: "checkbox",
@@ -61,7 +72,12 @@ export const conceptsData = {
       "Accepting terms and conditions",
       "Enabling filters",
       "Multi-option selection",
-    ],
+    ], importantNote: [
+      'Finding checkbox: We should target input tag with attribute type as checkbox (<input type="checkbox" />',
+      'Sometimes we can see div tags as checkboxes',
+      'We can assert a checkbox state using isSelected method',
+      'Most of the times we can click on the label of the checkbox to select the option'
+    ]
   },
   keyboard: {
   name: "keyboard",
@@ -75,7 +91,9 @@ export const conceptsData = {
     "Testing keyboard accessibility",
     "Triggering shortcuts (e.g., Ctrl + S)",
     "Simulating typing in input fields"
-  ],
+  ], importantNote: [
+    'We need to use Actions class (Selenium) to perform keyboard actions'
+  ]
 },
 table: {
   name: "table",
@@ -89,7 +107,13 @@ table: {
     "Filtering and verifying search results",
     "Paginating large datasets",
     "Extracting tabular information for assertions"
-  ],
+  ], importantNote: [
+    'Finding Table: We should target table tag which contains tHead, tBody, tr and td tags',
+    'tHead: This is where the table headers present',
+    'tBody: This is where actual data of the table present',
+    'tr: This represents a particular row data',
+    'td: This is where actual data be stored'
+  ]
 },
 scroll: {
   name: "scroll",
@@ -103,7 +127,10 @@ scroll: {
     "Testing infinite scroll pagination",
     "Validating sticky header or footer behavior",
     "Ensuring smooth scrolling transitions and performance"
-  ],
+  ], importantNote: [
+    'We can acheive scrolling in two different ways - using Actions class & using JSExecutor',
+    
+  ]
 },
   radio: {
     name: "radio",
@@ -114,7 +141,7 @@ scroll: {
     useCases: [
       "Choosing one option from a list",
       "Survey and quiz forms",
-    ],
+    ], importantNote: []
   },
   textarea: {
     name: "textarea",
@@ -125,7 +152,7 @@ scroll: {
     useCases: [
       "Collecting long-form input like comments or feedback",
       "Message boxes",
-    ],
+    ], importantNote: []
   },
   dropdown: {
     name: "dropdown",
@@ -136,7 +163,7 @@ scroll: {
     useCases: [
       "Choosing from a list of options",
       "Dynamic filtering",
-    ],
+    ], importantNote: []
   },
   alerts: {
     name: "alerts",
@@ -147,7 +174,7 @@ scroll: {
     useCases: [
       "Warning or confirmation before critical actions",
       "Informing user of errors or success",
-    ],
+    ], importantNote: []
   },
   tooltip: {
     name: "tooltip",
@@ -158,7 +185,7 @@ scroll: {
     useCases: [
       "Providing context or hints",
       "Labeling icons or buttons",
-    ],
+    ], importantNote: []
   },
   iframe: {
     name: "iframe",
@@ -169,7 +196,7 @@ scroll: {
     useCases: [
       "Embedding external content",
       "Sandboxed environments for forms or ads",
-    ],
+    ], importantNote: []
   },
   fileupload: {
     name: "fileupload",
@@ -180,7 +207,7 @@ scroll: {
     useCases: [
       "Image and document uploads",
       "Resume uploads in job portals",
-    ],
+    ], importantNote: []
   },
   modal: {
   name: "modal",
@@ -194,7 +221,7 @@ scroll: {
     "Image previews or detailed content views",
     "Alert or success messages in workflows",
     "Form wizards or step-based processes"
-  ],
+  ], importantNote: []
 }
 ,
   draganddrop: {
@@ -207,7 +234,7 @@ scroll: {
       "Custom file uploads",
       "Reordering list items",
       "Visual builders",
-    ],
+    ], importantNote: []
   },
   timepicker: {
   name: "timepicker",
@@ -220,7 +247,7 @@ scroll: {
     "Booking time slots for services",
     "Setting reminders or alarms",
     "Logging time for tasks or events"
-  ],
+  ], importantNote: []
 },
 notificationpermission: {
   name: "notificationpermission",
@@ -233,7 +260,8 @@ notificationpermission: {
     "Testing allow/deny/default permission flows",
     "Validating notification behavior based on permission",
     "Automating scenarios for browser-based alerts or reminders"
-  ],
+  ], importantNote: []
+
 },
   datepicker: {
   name: "datepicker",
@@ -246,7 +274,7 @@ notificationpermission: {
     "Choosing booking or reservation dates",
     "Filtering reports by date range",
     "Scheduling appointments or meetings"
-  ],
+  ], importantNote: []
 },
   multitab: {
     name: "multitab",
@@ -257,7 +285,7 @@ notificationpermission: {
     useCases: [
       "Session sharing between tabs",
       "Preventing multiple logins",
-    ],
+    ], importantNote: []
   },
   slider: {
     name: "slider",
@@ -268,7 +296,7 @@ notificationpermission: {
     useCases: [
       "Volume or brightness controls",
       "Adjusting values dynamically",
-    ],
+    ], importantNote: []
   },
   doubleclick: {
     name: "doubleclick",
@@ -279,7 +307,7 @@ notificationpermission: {
     useCases: [
       "Zooming into images",
       "Triggering edit mode",
-    ],
+    ], importantNote: []
   },
   contextclick: {
     name: "contextclick",
@@ -290,7 +318,7 @@ notificationpermission: {
     useCases: [
       "Custom right-click menus",
       "Preventing copy/download",
-    ],
+    ], importantNote: []
   },
   clickandhold: {
     name: "clickandhold",
@@ -302,6 +330,6 @@ notificationpermission: {
     useCases: [
       "Activating secondary actions",
       "Revealing hidden content",
-    ],
+    ], importantNote: []
   },
 };

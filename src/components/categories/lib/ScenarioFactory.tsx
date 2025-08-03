@@ -1,13 +1,8 @@
 import type { PracticeScenario } from "../../../interfaces/interfaces";
-import { BasicDragDropScenario } from "../../scenarios/DragAndDropScenarios";
-import UserFollowCard from "../../scenarios/LinkedInProfile/UserFollowCard";
-// import ProfileSuggestion from "../../scenarios/LinkedInProfile/ProfileSuggestion"
 import ProfileSuggestionV2 from "../../scenarios/LinkedInProfile/ProfileSuggestionV2";
-// import JobApplicationForm from "../../scenarios/JobApplication/JobApplicationForm"
 import JobApplicationFormV2 from "../../scenarios/JobApplication/JobApplicationFomV2";
 import QuizBoard from "../../scenarios/Quiz/QuizBoard";
 import NewsFeedBoard from "../../scenarios/NewsFeed/NewsFeedBoard";
-// import MultiLingualSite from "../../scenarios/LanguageSelection/MultiLingualSite"
 import HTMLEditor from "../../scenarios/HTMLCodeEditor/HTMLEditor";
 import DeleteModalWindow from "../../scenarios/ModalWindow/DeleteModalWindow";
 import KanbanBoard from "../../scenarios/KanbanBoard/KanbanBoard";
@@ -22,9 +17,9 @@ import Footer from "../../scenarios/FooterForLinks/FooterForLinks";
 
 export function getScenarioById(scenarioId: string): PracticeScenario | null {
   const scenarios: Record<string, PracticeScenario> = {
-    "button-basic": {
-      id: "button-basic",
-      title: "Basic Button Interactions",
+    "button": {
+      id: "button",
+      title: "Profile Suggestion Cnario",
       description:
         "Learn to automate button interactions, waits and hover cases",
       category: "Button",
@@ -42,7 +37,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     },
     iframe: {
       id: "iframe",
-      title: "iFrame Interaction Automation",
+      title: "HTML Editor Cnario",
       description:
         "Learn to automate interactions within embedded iframe documents",
       category: "Document Structure",
@@ -58,7 +53,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     },
     link: {
   id: "links",
-  title: "Anchor Tag Navigation Automation",
+  title: "Footer Section Cnario",
   description:
     "Learn to automate and validate navigation using anchor (`<a>`) tags, including internal links, external redirects, and hash-based scrolling.",
   category: "Navigation",
@@ -74,7 +69,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
 },
     modal: {
       id: "modal",
-      title: "Modal Window Automation",
+      title: "Delete Item Cnario",
       description:
         "Learn to automate opening, interacting with, and closing modal windows in web applications",
       category: "UI Components",
@@ -90,7 +85,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     },
     draganddrop: {
       id: "drag-and-drop",
-      title: "Drag and Drop Automation",
+      title: "Kanban Board Drag & Drop Cnario",
       description:
         "Learn to automate dragging elements and dropping them into target containers in web interfaces",
       category: "UI Components",
@@ -104,47 +99,9 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
       ],
       siteContent: KanbanBoard(),
     },
-
-    "button-states": {
-      id: "button-states",
-      title: "Button States and Conditions",
-      description:
-        "Master automation of buttons in different states during form processing",
-      category: "Button",
-      difficulty: "intermediate",
-      learningObjectives: [
-        "Handle buttons in loading/processing states",
-        "Test disabled button behavior",
-        "Understand error state button handling",
-        "Learn to wait for button state changes",
-        "Practice state-dependent automation logic",
-      ],
-      siteContent: UserFollowCard({
-        name: "END Prasad",
-        avatarUrl: "hello",
-        title: "Join me in linkedIn",
-      }),
-    },
-    input: {
-      id: "input",
-      title: "Basic Input Field Automation",
-      description:
-        "Learn to automate various input fields in a registration form",
-      category: "Input",
-      difficulty: "beginner",
-      learningObjectives: [
-        "Automate text input fields",
-        "Handle different input types (email, password, tel)",
-        "Work with dropdown/select elements",
-        "Practice form field validation",
-        "Learn input field clearing and updating",
-      ],
-      siteContent: JobApplicationFormV2(),
-    },
-
     datepicker: {
       id: "date-picker",
-      title: "Date Picker Automation",
+      title: "Employment History Cnario",
       description:
         "Learn to automate interactions with date picker components in forms and scheduling interfaces",
       category: "Input",
@@ -160,7 +117,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     },
     timepicker: {
       id: "time-picker",
-      title: "Time Picker Automation",
+      title: "Saloon Appointment Booking Cnario",
       description:
         "Learn to automate interactions with time picker components in forms and scheduling interfaces",
       category: "Input",
@@ -176,11 +133,11 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     },
     notificationpermission: {
       id: "notification-permission",
-      title: "Notification Permission Automation",
+      title: "Notification Permission Cnario",
       description:
         "Learn to automate handling of browser notification permission prompts and validate responses",
       category: "Browser APIs",
-      difficulty: "intermediate",
+      difficulty: "advanced",
       learningObjectives: [
         "Trigger and detect notification permission prompts",
         "Simulate allow, deny, and default permission states",
@@ -192,7 +149,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     },
     keyboard: {
       id: "keyboard-events",
-      title: "Keyboard Events Automation",
+      title: "Teams Chat with keyboard events Cnario",
       description:
         "Learn to automate and validate keyboard interactions such as typing, shortcuts, and form navigation using key events.",
       category: "Input",
@@ -208,7 +165,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     },
     table: {
       id: "table-interaction",
-      title: "Table Automation",
+      title: "Employee Table Cnario",
       description:
         "Learn to automate and validate data interactions within table elements, including sorting, filtering, and pagination.",
       category: "Data Display",
@@ -224,7 +181,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     },
     scroll: {
       id: "scroll-behavior",
-      title: "Scroll Automation",
+      title: "Course Explorer Cnario",
       description:
         "Learn to automate and validate scrolling behaviors including lazy loading, infinite scroll, and visibility of dynamic content.",
       category: "Page Interaction",
@@ -241,8 +198,8 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
 
     radio: {
       id: "radio",
-      title: "Radio Button Input Automation",
-      description: "Learn to automate radio button selection logic in forms",
+      title: "Quiz Board Cnario",
+      description: "Learn to automate radio button selection logic in forms(Quiz)",
       category: "Input",
       difficulty: "beginner",
       learningObjectives: [
@@ -256,47 +213,28 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
     },
     dropdown: {
       id: "dropdown",
-      title: "Dropdown Select Automation",
+      title: "Country Currency Checker Cnario",
       description:
-        "Learn to automate single and multi-select dropdowns in form fields",
+        "Learn to automate different dropdowns like searchable and select",
       category: "Input",
       difficulty: "beginner",
       learningObjectives: [
         "Automate selecting options from dropdowns",
-        "Handle single and multiple select dropdowns",
         "Verify selected values and defaults",
-        "Interact with custom styled dropdown components",
-        "Handle dynamic option rendering",
+        "Interact with custom styled dropdown components like search",
       ],
       // siteContent: MultiLingualSite()
       siteContent: CountryCurrencySelector(),
     },
-    "dragdrop-basic": {
-      id: "dragdrop-basic",
-      title: "Basic Drag and Drop",
-      description:
-        "Learn to automate drag and drop interactions in a task management board",
-      category: "Drag & Drop",
-      difficulty: "advanced",
-      learningObjectives: [
-        "Understand drag and drop mechanics",
-        "Practice dragging elements between containers",
-        "Learn to verify drop zone acceptance",
-        "Handle drag and drop events",
-        "Test drag and drop validation rules",
-      ],
-      siteContent: BasicDragDropScenario(),
-    },
     checkbox: {
       id: "checkbox",
-      title: "Checkbox Input Automation",
+      title: "News Feed Cnario",
       description:
-        "Learn to automate checkbox selection and validation in various form scenarios",
+        "Learn to automate checkbox selection and validation",
       category: "Input",
       difficulty: "beginner",
       learningObjectives: [
         "Automate checking and unchecking checkboxes",
-        "Work with multiple checkbox groups",
         "Verify selected checkbox values",
         "Handle default and pre-checked states",
         "Interact with labels to toggle checkbox state",
@@ -306,9 +244,9 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
 
     form: {
       id: "form",
-      title: "Basic Form Automation",
+      title: "Job Application Form Cnario",
       description:
-        "Learn to automate user input and validation for a registration form",
+        "Learn to automate user input and validation for a job application form",
       category: "Forms",
       difficulty: "advanced",
       learningObjectives: [

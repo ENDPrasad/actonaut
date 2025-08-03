@@ -23,7 +23,7 @@ export function CodeBlock({ code, language = "html" }: CodeBlockProps) {
           wordBreak: "break-all",
         }}
       >
-        <code style={{fontFamily: 'monospace, "Inter" !important'}} className={`language-${language}`}>{code}</code>
+        <code id="code-block" style={{fontFamily: 'monospace, "Inter" !important'}} className={`language-${language}`}>{code}</code>
       </Typography>
     </Paper>
   )
