@@ -105,7 +105,6 @@ table: {
     "Validating table data after form submissions",
     "Testing sorting functionality in columns",
     "Filtering and verifying search results",
-    "Paginating large datasets",
     "Extracting tabular information for assertions"
   ], importantNote: [
     'Finding Table: We should target table tag which contains tHead, tBody, tr and td tags',
@@ -125,8 +124,6 @@ scroll: {
     "Triggering lazy-loaded content",
     "Interacting with elements outside the viewport",
     "Testing infinite scroll pagination",
-    "Validating sticky header or footer behavior",
-    "Ensuring smooth scrolling transitions and performance"
   ], importantNote: [
     'We can acheive scrolling in two different ways - using Actions class & using JSExecutor',
     
@@ -220,7 +217,6 @@ scroll: {
     "Delete confirmation dialogs",
     "Image previews or detailed content views",
     "Alert or success messages in workflows",
-    "Form wizards or step-based processes"
   ], importantNote: []
 }
 ,
@@ -233,7 +229,7 @@ scroll: {
     useCases: [
       "Custom file uploads",
       "Reordering list items",
-      "Visual builders",
+      "Visual builders (ex: Paint, Canva etc..,)",
     ], importantNote: []
   },
   timepicker: {

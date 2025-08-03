@@ -59,7 +59,7 @@ const LazyCourseList: React.FC = () => {
     if (loading || visibleCourses >= courses.length) return;
     setLoading(true);
     setTimeout(() => {
-      setVisibleCourses((prev) => Math.min(prev + 5, courses.length));
+      setVisibleCourses((prev) => Math.min(prev + 10, courses.length));
       setLoading(false);
     }, 3000);
   };

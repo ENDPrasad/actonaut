@@ -1,8 +1,8 @@
 import { Button } from "@mui/material"
-import { PRIMARY_BG_COLOR, PRIMARY_COLOR, PRIMARY_COLOR_LIGHT } from "../helper/contants"
-import CustomInput from "./smallComponents/CustomInput"
-import CustomTextArea from "./smallComponents/CustomTextArea"
-import SubHeader from "./smallComponents/SubHeader"
+import { PRIMARY_BG_COLOR, PRIMARY_COLOR, PRIMARY_COLOR_LIGHT } from "../../helper/contants"
+import CustomInput from "../smallComponents/CustomInput"
+import CustomTextArea from "../smallComponents/CustomTextArea"
+import SubHeader from "../smallComponents/SubHeader"
 import { useRef } from "react"
 import emailjs from 'emailjs-com';
 
