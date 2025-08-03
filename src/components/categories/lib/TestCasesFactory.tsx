@@ -222,20 +222,6 @@ export function createCheckBoxTestCases(): TestCase[] {
       "Close the dialog without making changes",
       "Verify that news items remain the same",
     ],
-  },
-  {
-    id: "NEWS_004",
-    scenario: "Rapidly toggle category checkboxes",
-    type: "negative",
-    description: "Verify system stability when toggling categories rapidly",
-    expectedResult: "No crash or unexpected behavior should occur",
-    priority: "medium",
-    steps: [
-      "Click 'Set Preferences'",
-      "Rapidly check and uncheck several categories",
-      "Click 'Done'",
-      "Verify the UI updates correctly without any glitches",
-    ],
   }
 ]
 
@@ -300,20 +286,6 @@ export function createRadioTestCases(): TestCase[] {
       "Verify score is 0",
       "Verify result shows 'Fail ❌'",
     ],
-  },
-  {
-    id: "QUIZ_005",
-    scenario: "Change answer before submission",
-    type: "positive",
-    description: "Verify that changing an answer updates the selection correctly",
-    expectedResult: "Only the latest selected option should be considered during evaluation",
-    priority: "medium",
-    steps: [
-      "Select an answer for a question",
-      "Change it to a different option",
-      "Submit the quiz",
-      "Verify only the last selected answer is considered",
-    ],
   }
 ]
 
@@ -373,19 +345,6 @@ export function createDropDownTestCases():TestCase[] {
       "Simulate setting selected language to an invalid code (e.g., 'jp') in state manually",
       "Render the component",
       "Verify that no crash occurs and fallback/default message is shown"
-    ]
-  },
-  {
-    id: "LANG_005",
-    scenario: "Rapidly switch between multiple languages",
-    type: "negative",
-    description: "Verify that the component handles rapid language switching without delay or error",
-    expectedResult: "Text should update correctly and no performance or visual glitches should occur",
-    priority: "medium",
-    steps: [
-      "Navigate to the language selector component",
-      "Quickly select 'German', then 'Hindi', then 'Spanish'",
-      "Verify that the final displayed message matches 'Spanish' translation"
     ]
   }
 ]
@@ -531,19 +490,6 @@ export function createModalWindowTestCases(): TestCase[] {
     ]
   },
   {
-    id: "MODAL_004",
-    scenario: "Try to delete item without opening modal",
-    type: "negative",
-    description: "Ensure that no delete action can occur unless modal is opened and confirmed",
-    expectedResult: "Item should not be deleted without user confirmation through modal",
-    priority: "medium",
-    steps: [
-      "Load the page with the item",
-      "Do not click delete or modal buttons",
-      "Verify that item is still present"
-    ]
-  },
-  {
     id: "MODAL_005",
     scenario: "Press Escape key to close modal",
     type: "positive",
@@ -567,19 +513,6 @@ export function createModalWindowTestCases(): TestCase[] {
       "Click the delete button to open modal",
       "Click anywhere outside the modal window",
       "Ensure the modal disappears and item remains unchanged"
-    ]
-  },
-  {
-    id: "MODAL_007",
-    scenario: "Modal behavior on rapid open-close interaction",
-    type: "negative",
-    description: "Verify modal handles rapid open-close actions without glitches",
-    expectedResult: "Modal should function correctly without freezing or crashing",
-    priority: "low",
-    steps: [
-      "Click delete button multiple times rapidly",
-      "Click cancel or delete repeatedly",
-      "Ensure UI remains stable and modal behaves predictably"
     ]
   }
 ]
@@ -643,19 +576,6 @@ export function createDragAndDropTestCases(): TestCase[] {
     ]
   },
   {
-    id: "KANBAN_005",
-    scenario: "Drag multiple tasks rapidly between columns",
-    type: "negative",
-    description: "Verify that the UI handles rapid drag-and-drop actions without breaking",
-    expectedResult: "Tasks should move correctly and UI should not freeze or glitch",
-    priority: "medium",
-    steps: [
-      "Select a task and move it quickly between columns",
-      "Repeat with 2–3 tasks in succession",
-      "Ensure that column contents update correctly and app remains responsive"
-    ]
-  },
-  {
     id: "KANBAN_006",
     scenario: "Verify task status update after drag and drop",
     type: "positive",
@@ -666,19 +586,6 @@ export function createDragAndDropTestCases(): TestCase[] {
       "Drag a task from 'Not Started' to 'Done'",
       "Inspect the task state in console or component props/state",
       "Ensure that the status field equals 'Done'"
-    ]
-  },
-  {
-    id: "KANBAN_007",
-    scenario: "Drag task when no columns are rendered (edge case)",
-    type: "negative",
-    description: "Verify behavior when user tries to drag task while no columns exist",
-    expectedResult: "Drag should not throw errors or crash the app",
-    priority: "low",
-    steps: [
-      "Remove or hide all columns from the DOM",
-      "Try dragging a task card (if still visible)",
-      "Ensure app does not crash and shows fallback or does nothing"
     ]
   }
 ]
@@ -853,20 +760,7 @@ export function createKeyboardTestcases(): TestCase[] {
       "Verify that the link does not open"
     ]
   },
-  {
-    id: "CHAT_005",
-    scenario: "Block sending empty or whitespace-only message",
-    type: "negative",
-    description: "Verify that clicking Send with empty or whitespace-only input does not send a message",
-    expectedResult: "No message should be added to the chat area",
-    priority: "medium",
-    steps: [
-      "Render the TeamsChat component",
-      "Type a single space character in the input field",
-      "Click the Send button",
-      "Verify that no message appears in the chat area"
-    ]
-  },
+
   {
     id: "CHAT_006",
     scenario: "Send message using Enter key",
@@ -879,20 +773,6 @@ export function createKeyboardTestcases(): TestCase[] {
       "Type 'Hello via Enter' in the input field",
       "Press Enter key",
       "Verify that the message appears in the chat window"
-    ]
-  },
-  {
-    id: "CHAT_007",
-    scenario: "Handle multi-line message with Shift+Enter",
-    type: "positive",
-    description: "Verify that Shift+Enter creates a new line in the input field",
-    expectedResult: "New line should be added instead of sending the message",
-    priority: "medium",
-    steps: [
-      "Render the TeamsChat component",
-      "Type 'Hello' and press Shift+Enter",
-      "Type 'World'",
-      "Verify that the input has two lines and message is not sent"
     ]
   }
 ]
@@ -995,19 +875,6 @@ export function createTableTestCases(): TestCase[] {
     ]
   },
   {
-    id: "EMP_008",
-    scenario: "Try to delete a row and cancel the confirmation",
-    type: "negative",
-    description: "Verify that clicking cancel on confirmation does not remove the employee",
-    expectedResult: "Row should remain in the table",
-    priority: "low",
-    steps: [
-      "Click on 'Delete' for an employee",
-      "Click 'Cancel' in the confirmation prompt",
-      "Verify that the employee row is still present"
-    ]
-  },
-  {
     id: "EMP_009",
     scenario: "Edit modal opens with existing employee data",
     type: "positive",
@@ -1034,7 +901,6 @@ export function createTableTestCases(): TestCase[] {
     ]
   }
 ]
-
 }
 
 export function createScrollTestcases(): TestCase[] {
@@ -1053,20 +919,6 @@ export function createScrollTestcases(): TestCase[] {
     ]
   },
   {
-    id: "COURSE_002",
-    scenario: "Scroll down to trigger lazy load",
-    type: "positive",
-    description: "Verify that more courses are loaded as user scrolls down",
-    expectedResult: "Next 5 courses should load when scrolling near the bottom",
-    priority: "high",
-    steps: [
-      "Navigate to the course explorer page",
-      "Scroll to the bottom of the left course list container",
-      "Wait for the loading spinner",
-      "Verify that 5 additional courses are appended to the list"
-    ]
-  },
-  {
     id: "COURSE_003",
     scenario: "Click on a course card to preview",
     type: "positive",
@@ -1077,61 +929,6 @@ export function createScrollTestcases(): TestCase[] {
       "Navigate to the course explorer page",
       "Click on any visible course card",
       "Verify that the corresponding course content appears on the right"
-    ]
-  },
-  {
-    id: "COURSE_004",
-    scenario: "Click the same course twice",
-    type: "positive",
-    description: "Ensure that clicking the same course again doesn't cause an error or flicker",
-    expectedResult: "Course remains selected and no errors occur",
-    priority: "low",
-    steps: [
-      "Navigate to the course explorer page",
-      "Click on a course card",
-      "Click on the same course card again",
-      "Ensure the preview still shows correctly and app behaves normally"
-    ]
-  },
-  {
-    id: "COURSE_005",
-    scenario: "Do not scroll",
-    type: "negative",
-    description: "Verify that only 5 courses are shown if user does not scroll",
-    expectedResult: "Course list should not expand unless scrolled",
-    priority: "medium",
-    steps: [
-      "Navigate to the course explorer page",
-      "Do not perform any scroll",
-      "Ensure that only the initial 5 courses are present"
-    ]
-  },
-  {
-    id: "COURSE_006",
-    scenario: "Scroll after all courses loaded",
-    type: "negative",
-    description: "Verify that no additional loading occurs after all courses are rendered",
-    expectedResult: "Loading spinner should not appear and no duplicate cards should be added",
-    priority: "medium",
-    steps: [
-      "Navigate to the course explorer page",
-      "Scroll repeatedly until all courses are visible",
-      "Continue scrolling",
-      "Ensure no additional loading or UI flickering occurs"
-    ]
-  },
-  {
-    id: "COURSE_007",
-    scenario: "Simulate no internet or slow connection",
-    type: "negative",
-    description: "Verify behavior when loading next batch of courses fails or delays",
-    expectedResult: "Loading spinner remains visible or shows fallback; app does not crash",
-    priority: "low",
-    steps: [
-      "Throttle network to slow 3G using browser dev tools",
-      "Scroll to bottom of course list",
-      "Observe loading behavior",
-      "Ensure app stays stable even if loading is delayed"
     ]
   }
 ]
@@ -1205,33 +1002,6 @@ export function createDropDownTestCases2(): TestCase[] {
       "Render the component",
       "Verify that no country is selected by default",
       "Check that currency field shows '---'"
-    ]
-  },
-  {
-    id: "CURR_006",
-    scenario: "Simulate slow API or heavy DOM loading (for dynamic data scenario)",
-    type: "negative",
-    description: "Verify that UI does not break or misbehave while waiting for data",
-    expectedResult: "Dropdown remains accessible and shows loading indicator or fallback",
-    priority: "medium",
-    steps: [
-      "Throttle network to slow 3G using dev tools",
-      "Render the component that fetches countries from API",
-      "Ensure component doesn't crash and user can retry later"
-    ]
-  },
-  {
-    id: "CURR_007",
-    scenario: "Verify dropdown supports keyboard navigation",
-    type: "positive",
-    description: "Ensure users can navigate and select options using keyboard",
-    expectedResult: "User should be able to focus, arrow down, and select an option using keyboard",
-    priority: "medium",
-    steps: [
-      "Tab to the country selector input",
-      "Press down arrow to navigate through list",
-      "Press Enter to select a country",
-      "Verify that the corresponding currency is displayed"
     ]
   },
   {

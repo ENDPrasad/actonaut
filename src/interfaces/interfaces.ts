@@ -104,3 +104,24 @@ export interface PracticeEnvironment {
         description: string,
       }[]
 }
+// interfaces.ts
+export interface Blog {
+  title: string;
+  category: string;
+  slug: string;
+  description: string;
+  content: BlogContent[];
+}
+
+export type BlogContent = ParagraphContent | ImageContent;
+
+interface ParagraphContent {
+  type: 'paragraph';
+  text: string;
+}
+
+interface ImageContent {
+  type: 'image';
+  src: string;
+  alt: string;
+}

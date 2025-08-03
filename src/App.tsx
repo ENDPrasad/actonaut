@@ -7,6 +7,9 @@ import { ConceptPage } from './components/categories/ConceptPage';
 import HomePage from './concepts/ExamplePage';
 import ConceptOutlinePage from './pages/ConceptPage/ConceptPage';
 import ChallengesPage from './pages/challenges/ChallengesPage';
+import BlogFactory from './components/blogs/BlogFactory';
+import BlogPage from './components/blogs/pages/BlogPage';
+import Blogs from './components/blogs/pages/Blogs';
 
 function App() {
 
@@ -19,6 +22,9 @@ function App() {
         <Route path='/explore/:slug' element={<ConceptOutlinePage><ConceptPage /></ConceptOutlinePage>}/>
         <Route path="/challenges" element={<ChallengesPage />} />
             {/* <Route path="/challenge/:challengeId" element={<ChallengePage />} /> */}
+            <Route path="/blogs" element={<Blogs />} />
+<Route path="/blog/:slug" element={<BlogPage />} />
+
       </Routes>
     </>
   )
