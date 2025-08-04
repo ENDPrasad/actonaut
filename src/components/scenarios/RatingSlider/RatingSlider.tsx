@@ -43,7 +43,7 @@ export default function RatingSlider() {
         <Slider
           disabled={submitted}
           value={sliderValue ?? 0}
-          onChange={(e, val) => setSliderValue(val as number)}
+          onChange={(_e, val) => setSliderValue(val as number)}
           min={1}
           max={10}
           step={1}

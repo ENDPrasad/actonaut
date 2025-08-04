@@ -15,7 +15,7 @@ import ImportantNoteList from "../ImportantNotes"
 export function createConceptPageData(
   conceptName: string,
   overview: string,
-  syntaxCode: string,
+//   syntaxCode: string,
   useCases: string[],
   importantNote: string[],
   scenarioId?: string,

@@ -23,7 +23,7 @@ export function ConceptPage() {
   const pageData = createConceptPageData(
     concept.name,
     concept.overview,
-    concept.syntaxCode,
+    // concept.syntaxCode,
     concept.useCases,
     concept.importantNote
   )
