@@ -3,7 +3,6 @@ import ProfileSuggestionV2 from "../../scenarios/LinkedInProfile/ProfileSuggesti
 import JobApplicationFormV2 from "../../scenarios/JobApplication/JobApplicationFomV2";
 import QuizBoard from "../../scenarios/Quiz/QuizBoard";
 import NewsFeedBoard from "../../scenarios/NewsFeed/NewsFeedBoard";
-import HTMLEditor from "../../scenarios/HTMLCodeEditor/HTMLEditor";
 import DeleteModalWindow from "../../scenarios/ModalWindow/DeleteModalWindow";
 import KanbanBoard from "../../scenarios/KanbanBoard/KanbanBoard";
 import EmploymentHistory from "../../scenarios/EmploymentHistory/EmploymentHistory";
@@ -14,6 +13,13 @@ import EmployeeTable from "../../scenarios/TableCRUD/CRUDTable";
 import CourseExplorer from "../../scenarios/DynamicCourseLoader/CourseExplorer";
 import CountryCurrencySelector from "../../scenarios/CurrencyConverter/CountryCurrencySelector";
 import Footer from "../../scenarios/FooterForLinks/FooterForLinks";
+import IframePaymentMock from "../../scenarios/PaymentGateway/PaymentGateway";
+import BankAccountForm from "../../scenarios/BankAccountForm/BankAccountForm";
+import DeleteConfirmScenario from "../../scenarios/DeleteConfirmation/DeleteConfirmationScenario";
+import RatingSlider from "../../scenarios/RatingSlider/RatingSlider";
+import FileUploadPreview from "../../scenarios/FileUpload/FileUploadPreview";
+import QuickLinks from "../../scenarios/QuickLinks/QuickLinks";
+import AddToCartWithToast from "../../scenarios/AddToCart/AddToCart";
 
 export function getScenarioById(scenarioId: string): PracticeScenario | null {
   const scenarios: Record<string, PracticeScenario> = {
@@ -35,6 +41,25 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
       ],
       siteContent: ProfileSuggestionV2(),
     },
+    "tooltip": {
+  id: "tooltip",
+  title: "Bank KYC Form with Tooltips",
+  description:
+    "Practice automating tooltip interactions, input validations, and form submission flows in a real-world-like KYC form",
+  category: "Tooltip",
+  difficulty: "beginner",
+  learningObjectives: [
+    "Hover over question mark icons to reveal tooltips",
+    "Verify tooltip text matches expected content",
+    "Test form validation with required and invalid inputs",
+    "Fill inputs and assert dynamic tooltip visibility",
+    "Automate submission and validate confirmation modal",
+    "Ensure tooltips are accessible for each form field",
+    "Test edge cases like missing inputs or partial completion",
+  ],
+  siteContent: BankAccountForm(),
+},
+
     iframe: {
       id: "iframe",
       title: "HTML Editor Cnario",
@@ -46,7 +71,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
         "Understand iframe structure and usage",
         "Switch context between main page and iframe",
       ],
-      siteContent: HTMLEditor(),
+      siteContent: IframePaymentMock(),
     },
     link: {
   id: "links",
@@ -80,6 +105,22 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
       ],
       siteContent: DeleteModalWindow(),
     },
+    multiwindow: {
+  id: "multiwindow",
+  title: "Quick Links Navigation Cnario",
+  description:
+    "Practice handling different types of navigation including new tabs, new windows, and external/internal links using the Quick Links section.",
+  category: "Navigation & Window Handling",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Understand how to automate link clicks opening in new tabs or windows",
+    "Identify and handle different `target` attributes like _blank, _self, or custom window names",
+    "Switch between parent and child windows or tabs using automation tools",
+    "Validate navigation paths and content on the destination pages",
+    "Handle broken, external, and mail links during automation testing",
+  ],
+  siteContent: QuickLinks(),
+},
     draganddrop: {
       id: "drag-and-drop",
       title: "Kanban Board Drag & Drop Cnario",
@@ -221,6 +262,7 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
       // siteContent: MultiLingualSite()
       siteContent: CountryCurrencySelector(),
     },
+
     checkbox: {
       id: "checkbox",
       title: "News Feed Cnario",
@@ -253,6 +295,77 @@ export function getScenarioById(scenarioId: string): PracticeScenario | null {
       ],
       siteContent: JobApplicationFormV2(),
     },
+    "alert": {
+  id: "alert",
+  title: "Delete Confirmation Cnario",
+  description:
+    "Learn to automate confirm dialogs by simulating OK and Cancel actions and verifying conditional UI updates.",
+  category: "Alert",
+  difficulty: "beginner",
+  learningObjectives: [
+    "Trigger a confirm dialog on delete action",
+    "Simulate clicking OK and assert the item is removed",
+    "Simulate clicking Cancel and assert the item remains",
+    "Verify the correct status message is shown after each action",
+    "Ensure confirm message content is correct",
+    "Handle browser-native confirm interactions in automation tools",
+  ],
+  siteContent: DeleteConfirmScenario(),
+},
+"slider": {
+  id: "slider",
+  title: "Movie Rating Scenario",
+  description:
+    "Learn to automate slider interactions by simulating user ratings, updating averages, and validating dynamic feedback.",
+  category: "Slider",
+  difficulty: "beginner",
+  learningObjectives: [
+    "Simulate sliding input to give a user rating",
+    "Verify the average rating updates after submission",
+    "Validate dynamic review messages are displayed correctly",
+    "Test edge values on slider (min and max)",
+    "Ensure only valid ratings update the average",
+    "Handle state updates and visual feedback based on rating",
+    "Verify post-submit slider gets disabled to prevent re-rating"
+  ],
+  siteContent: RatingSlider(),
+},
+"fileupload": {
+  id: "fileUpload",
+  title: "Text File Upload Preview",
+  description:
+    "Learn to automate file upload interactions and verify the rendering and validation of uploaded TXT file content.",
+  category: "File Upload",
+  difficulty: "beginner",
+  learningObjectives: [
+    "Trigger a file upload input using automation",
+    "Upload a `.txt` file without third-party libraries",
+    "Read and preview the file content in the UI",
+    "Validate that the content displayed matches the file content",
+    "Handle edge cases such as empty files or unsupported formats",
+    "Ensure file input accepts only `.txt` extensions",
+    "Verify UI feedback for successful and failed uploads"
+  ],
+  siteContent: FileUploadPreview({ acceptedExtension: ".txt" }),
+},
+wait: {
+  id: "wait",
+  title: "Add to Cart with Toast Notification",
+  description:
+    "Simulate a real-world e-commerce interaction where a product is added to the cart and a toast notification confirms the action after a delay. Learn to use both implicit and explicit waits in automation scripts.",
+  category: "Interaction",
+  difficulty: "intermediate",
+  learningObjectives: [
+    "Practice handling delayed UI feedback using explicit waits",
+    "Use implicit waits for interacting with static elements",
+    "Verify success toast notifications after cart actions",
+    "Wait for toast visibility and automatic dismissal",
+    "Handle synchronization for dynamic DOM updates",
+  ],
+  siteContent: AddToCartWithToast(),
+}
+
+
   };
 
   return scenarios[scenarioId] || null;

@@ -44,8 +44,8 @@ export default function ConceptPage({ params }: ConceptPageProps) {
   if (!concept) {
     return <div className="py-16">Concept not found</div>
   }
-
-  const pageData = createConceptPageData(concept.name, concept.overview, concept.syntaxCode, concept.useCases, concept.importantNote)
+  // Removed concept.syntaxCode, which we are passing as 3rd parameter
+  const pageData = createConceptPageData(concept.name, concept.overview,  concept.useCases, concept.importantNote)
 
   return <ConceptPageLayout data={pageData} />
 }

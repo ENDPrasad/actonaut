@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { ConceptPageLayout } from "./ConceptPageLayout"
 import { createConceptPageData } from "./lib/conceptDataFactory"
 import { conceptsData } from "../../assets/data/ConceptPagesData"
+import NotFound from "../../pages/NotFound"
 
 
 export function ConceptPage() {
@@ -16,13 +17,13 @@ export function ConceptPage() {
   const concept = conceptsData[slug as keyof typeof conceptsData]
 
   if (!concept) {
-    return <div>Concept not found</div>
+    return <NotFound />
   }
 
   const pageData = createConceptPageData(
     concept.name,
     concept.overview,
-    concept.syntaxCode,
+    // concept.syntaxCode,
     concept.useCases,
     concept.importantNote
   )

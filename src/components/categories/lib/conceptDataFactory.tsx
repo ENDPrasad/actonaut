@@ -1,5 +1,5 @@
 import type { ConceptPageData, ContentSection } from "../../../interfaces/interfaces"
-import { CodeBlock } from "../CodeBlock"
+// import { CodeBlock } from "../CodeBlock"
 import { BulletList } from "../BulletList"
 import { ContentSectionComponent } from "../ContentSection"
 import { Typography } from "@mui/material"
@@ -15,7 +15,7 @@ import ImportantNoteList from "../ImportantNotes"
 export function createConceptPageData(
   conceptName: string,
   overview: string,
-  syntaxCode: string,
+//   syntaxCode: string,
   useCases: string[],
   importantNote: string[],
   scenarioId?: string,
@@ -44,11 +44,11 @@ export function createConceptPageData(
                             content: <Typography className="text-gray-700">{overview}</Typography>,
                         }} />
 
-                    <ContentSectionComponent
+                    {/* <ContentSectionComponent
                         section={{
                             title: "Syntax",
                             content: <CodeBlock code={syntaxCode} />,
-                        }} />
+                        }} /> */}
 
                     <ContentSectionComponent
                         section={{

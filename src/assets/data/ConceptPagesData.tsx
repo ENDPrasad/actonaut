@@ -162,9 +162,9 @@ scroll: {
       "Dynamic filtering",
     ], importantNote: []
   },
-  alerts: {
-    name: "alerts",
-    type: "alerts",
+  alert: {
+    name: "alert",
+    type: "alert",
     overview:
       "Alerts notify the user of important information using popups or messages.",
     syntaxCode: 'alert("Are you sure you want to delete this?")',
@@ -173,6 +173,43 @@ scroll: {
       "Informing user of errors or success",
     ], importantNote: []
   },
+  multiwindow: {
+  name: "multiwindow",
+  type: "navigation",
+  overview:
+    "The Quick Links section offers multiple navigation options that simulate real-world scenarios for multi-window, new tab, and external/internal navigation—helping users practice automation of different link behaviors.",
+  syntaxCode: `<a href="/explore/button" target="_blank">Learn about Button</a>`,
+  useCases: [
+    "Opening links in new tabs or windows for external/internal pages",
+    "Practicing automation with multi-tab and multi-window handling",
+    "Testing navigation consistency and link accessibility",
+    "Verifying 'target' behavior like _blank, _self etc.",
+    "Testing broken or invalid links",
+    "Validating external actions like mail or YouTube redirection"
+  ],
+  importantNote: [
+    "Links with `target='_blank'` open in a new tab",
+    "Links with `window.open()` or `target='windowName'` can open in new windows",
+    "Broken links should result in 404 or error handling test",
+    "Mail links can be tested via mailto: handler or navigation validation",
+    "Automating window/tab switching requires handling new window context in automation frameworks"
+  ]
+},
+  fileUpload: {
+  name: "fileUpload",
+  type: "input",
+  overview:
+    "The file upload input allows users to upload files from their local system. It is often used for importing documents, images, or data files.",
+  syntaxCode: '<input type="file" accept=".txt" />',
+  useCases: [
+    "Allow users to upload profile pictures or documents",
+    "Enable importing data via CSV or TXT files",
+    "Support file submissions in forms or job applications"
+  ],
+  importantNote: [
+    
+  ]
+},
   tooltip: {
     name: "tooltip",
     type: "tooltip",
@@ -328,4 +365,28 @@ notificationpermission: {
       "Revealing hidden content",
     ], importantNote: []
   },
+  wait: {
+  name: "wait",
+  type: "interaction",
+  overview:
+    "This scenario mimics a real-world e-commerce action where the user clicks an 'Add to Cart' button, and a success toast appears after a simulated network delay. It helps practice synchronization in automation using both implicit and explicit waits.",
+  syntaxCode: `
+<Button onClick={handleAddToCart}>Add to Cart</Button>
+<Snackbar open={open} autoHideDuration={4000}>
+  <Alert severity="success">Item added to cart!</Alert>
+</Snackbar>
+  `,
+  useCases: [
+    "Simulating delayed responses from the backend",
+    "Verifying toast notifications for success feedback",
+    "Practicing automation of dynamically appearing elements",
+    "Understanding how to use waits effectively"
+  ],
+  importantNote: [
+    "Use an explicit wait for the toast to appear after the 2-second delay",
+    "Use implicit wait for base page elements like the product name and button",
+    "Toast auto-dismissal can be validated using a wait for 'not visible' condition"
+  ],
+}
+
 };
