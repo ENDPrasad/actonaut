@@ -1,5 +1,5 @@
 import type { TestCase } from "../../../interfaces/interfaces";
-import { createButtonTestCases, createCheckBoxTestCases, createDateTestCases, createDragAndDropTestCases, createDropDownTestCases2, createFormTestCases, createIFrameTestCases, createKeyboardTestcases, createModalWindowTestCases, createNotificationTestCases, createRadioTestCases, createScrollTestcases, createTableTestCases, createTimeTestCases } from "./TestCasesFactory";
+import { createAlertTestCases, createButtonTestCases, createCheckBoxTestCases, createDateTestCases, createDragAndDropTestCases, createDropDownTestCases2, createFileUploadTestcases, createFormTestCases, createIFrameTestCases, createKeyboardTestcases, createLinksTestCases, createModalWindowTestCases, createMultiWindowTestCases, createNotificationTestCases, createRadioTestCases, createScrollTestcases, createSliderTestCases, createTableTestCases, createTimeTestCases, createTooltipTestCases, createWaitTestCases } from "./TestCasesFactory";
 
 
 export function getTestCasesById(id: string): TestCase[] | null {
@@ -17,7 +17,14 @@ export function getTestCasesById(id: string): TestCase[] | null {
     "notificationpermission": createNotificationTestCases(),
     "keyboard": createKeyboardTestcases(),
     "table": createTableTestCases(),
-    "scroll": createScrollTestcases()
+    "scroll": createScrollTestcases(),
+    "tooltip": createTooltipTestCases(),
+    "alert": createAlertTestCases(),
+    "slider": createSliderTestCases(),
+    "link": createLinksTestCases(),
+    "fileupload": createFileUploadTestcases(),
+    "multiwindow": createMultiWindowTestCases(),
+    "wait": createWaitTestCases()
     }
 
     return testcases[id] || null

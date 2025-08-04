@@ -351,97 +351,525 @@ export function createDropDownTestCases():TestCase[] {
 
 }
 
-export function createIFrameTestCases(): TestCase[] {
+export function createTooltipTestCases(): TestCase[] {
   return [
   {
-    id: "IFRAME_001",
-    scenario: "Render basic HTML correctly",
+    id: "TOOLTIP_001",
+    scenario: "Render payment form with tooltips",
     type: "positive",
-    description: "Verify that simple HTML content renders properly inside the iframe",
-    expectedResult: "Content such as headers and paragraphs should appear in the preview area",
+    description: "Verify that tooltips appear when hovering over question marks in the form fields",
+    expectedResult: "Each input field displays an appropriate tooltip when the user hovers over the question mark icon",
     priority: "high",
     steps: [
-      "Navigate to the HTML editor component",
-      "Enter '<h1>Hello</h1><p>This is a test</p>' in the editor",
-      "Verify that the preview area displays the corresponding header and paragraph"
+      "Navigate to the Payment Form component",
+      "Hover over the question mark icon next to 'Card Number'",
+      "Verify the tooltip displays 'Enter 16-digit card number without spaces'",
+      "Repeat hover and verification for 'Expiry Date', 'CVV', 'Cardholder Name' fields"
     ]
   },
   {
-    id: "IFRAME_002",
-    scenario: "Update preview in real-time as user types",
+    id: "TOOLTIP_002",
+    scenario: "Submit form with valid data",
     type: "positive",
-    description: "Ensure that changes to the HTML editor update the iframe content instantly",
-    expectedResult: "Preview pane should reflect changes without needing to reload or save",
+    description: "Verify that the form submits successfully and confirmation modal appears when all fields are valid",
+    expectedResult: "Form is submitted and a modal with masked card details appears",
     priority: "high",
     steps: [
-      "Navigate to the HTML editor component",
-      "Type '<p>Hello</p>' and observe the preview",
-      "Add '<b>World</b>' and ensure the preview updates with both changes"
+      "Fill in all form fields with valid data",
+      "Click the Submit button",
+      "Verify that a modal opens showing masked card details and an OK button"
+    ]
+  },
+  {
+    id: "TOOLTIP_003",
+    scenario: "Dismiss confirmation modal",
+    type: "positive",
+    description: "Verify that clicking the OK button in the modal closes the confirmation modal",
+    expectedResult: "Modal disappears after clicking the OK button",
+    priority: "medium",
+    steps: [
+      "Submit form with valid data to trigger confirmation modal",
+      "Click the OK button",
+      "Verify that the modal disappears"
+    ]
+  },
+  {
+    id: "TOOLTIP_004",
+    scenario: "Submit form with invalid card number",
+    type: "negative",
+    description: "Verify that validation prevents form submission with an invalid card number",
+    expectedResult: "Error message appears below the Card Number field and form is not submitted",
+    priority: "high",
+    steps: [
+      "Enter invalid card number (e.g., '1234')",
+      "Fill other fields with valid data",
+      "Click the Submit button",
+      "Verify that an error message is shown and modal does not appear"
+    ]
+  }
+]
+
+}
+
+export function createAlertTestCases(): TestCase[] {
+  return [
+  {
+    id: "CONFIRM_001",
+    scenario: "Show confirmation dialog on delete action",
+    type: "positive",
+    description: "Verify that clicking the delete button shows a confirm dialog",
+    expectedResult: "A confirm dialog with the message 'Are you sure you want to delete this item?' appears",
+    priority: "high",
+    steps: [
+      "Navigate to the Confirm Dialog demo page",
+      "Click on the 'Delete' button",
+      "Observe the confirm dialog popup"
+    ]
+  },
+  {
+    id: "CONFIRM_002",
+    scenario: "Accept confirmation dialog",
+    type: "positive",
+    description: "Verify that accepting the confirm dialog deletes the item and updates the UI",
+    expectedResult: "Item is removed and message 'Item deleted successfully' is displayed",
+    priority: "high",
+    steps: [
+      "Navigate to the Confirm Dialog demo page",
+      "Click on the 'Delete' button",
+      "Click 'Ok' on the confirm dialog",
+      "Verify that the item is removed from the UI",
+      "Verify the success message is displayed"
+    ]
+  },
+  {
+    id: "CONFIRM_003",
+    scenario: "Dismiss confirmation dialog",
+    type: "positive",
+    description: "Verify that dismissing the confirm dialog retains the item and shows cancellation message",
+    expectedResult: "Item remains on the UI and message 'Deletion cancelled' is displayed",
+    priority: "medium",
+    steps: [
+      "Navigate to the Confirm Dialog demo page",
+      "Click on the 'Delete' button",
+      "Click 'Cancel' on the confirm dialog",
+      "Verify that the item is still visible",
+      "Verify the cancellation message is displayed"
+    ]
+  },
+  {
+    id: "CONFIRM_004",
+    scenario: "Validate confirm dialog message",
+    type: "negative",
+    description: "Ensure the confirm dialog message is accurate and not empty",
+    expectedResult: "Confirm dialog message matches: 'Are you sure you want to delete this item?'",
+    priority: "medium",
+    steps: [
+      "Navigate to the Confirm Dialog demo page",
+      "Click on the 'Delete' button",
+      "Verify the dialog message text"
+    ]
+  },
+  {
+    id: "CONFIRM_005",
+    scenario: "Prevent deletion if item already removed",
+    type: "negative",
+    description: "Verify that the delete button is hidden if the item is already deleted",
+    expectedResult: "Delete button is not visible and item is not present",
+    priority: "low",
+    steps: [
+      "Navigate to the Confirm Dialog demo page",
+      "Click on 'Delete' and accept the dialog",
+      "Try clicking 'Delete' again",
+      "Verify the button and item are no longer visible"
+    ]
+  }
+]
+
+
+}
+
+export function createIFrameTestCases(): TestCase[] {
+  return [
+  {
+    id: "IFRAME_002",
+    scenario: "Show validation error for empty fields",
+    type: "negative",
+    description: "Validate that clicking 'Pay Now' with empty fields shows error messages",
+    expectedResult: "All input fields show respective error messages",
+    priority: "high",
+    steps: [
+      "Navigate to the payment page",
+      "Leave all input fields blank",
+      "Click on 'Pay Now' button inside iframe",
+      "Verify error messages for card number, expiry date, and CVV"
     ]
   },
   {
     id: "IFRAME_003",
-    scenario: "Enter invalid HTML code",
+    scenario: "Validate card number format",
     type: "negative",
-    description: "Verify the preview still attempts to render and doesn’t crash on malformed HTML",
-    expectedResult: "Iframe should render as much valid content as possible without error",
+    description: "Check validation for invalid card number",
+    expectedResult: "An error message should appear stating card number must be 16 digits",
     priority: "medium",
     steps: [
-      "Navigate to the HTML editor component",
-      "Enter '<div><p>Broken HTML' (no closing tags)",
-      "Verify iframe still shows partial content and no crash or console error occurs"
+      "Enter '1234' in the card number field",
+      "Enter valid expiry and CVV",
+      "Click 'Pay Now'",
+      "Verify only the card number error is shown"
     ]
   },
   {
     id: "IFRAME_004",
-    scenario: "Inject script tags",
+    scenario: "Validate expiry format",
     type: "negative",
-    description: "Ensure that scripts do not execute inside the iframe for security reasons",
-    expectedResult: "Script tags should be blocked due to sandboxing; no alert or JS execution should happen",
-    priority: "high",
+    description: "Check validation for invalid expiry date format",
+    expectedResult: "An error message should appear stating expiry must be in MM/YY format",
+    priority: "medium",
     steps: [
-      "Navigate to the HTML editor component",
-      "Enter '<script>alert(\"Hacked\")</script>' in the editor",
-      "Verify that no alert box appears and preview pane does not execute JS"
+      "Enter valid card number and CVV",
+      "Enter '13/2025' in expiry field",
+      "Click 'Pay Now'",
+      "Verify expiry field error message is shown"
     ]
   },
   {
     id: "IFRAME_005",
-    scenario: "Preview complex nested HTML structure",
-    type: "positive",
-    description: "Validate iframe can handle deep HTML structures without breaking layout",
-    expectedResult: "Complex layout should render correctly in preview area",
+    scenario: "Validate CVV format",
+    type: "negative",
+    description: "Check validation for CVV field with non-3-digit value",
+    expectedResult: "An error message should appear stating CVV must be 3 digits",
     priority: "medium",
     steps: [
-      "Navigate to the HTML editor component",
-      "Paste a deeply nested HTML like nested tables or divs",
-      "Ensure the layout renders without breaking and matches structure"
+      "Enter valid card number and expiry date",
+      "Enter '12' in CVV field",
+      "Click 'Pay Now'",
+      "Verify CVV error message is shown"
     ]
   },
   {
     id: "IFRAME_006",
-    scenario: "Clear HTML editor input",
+    scenario: "Successful payment data submission",
     type: "positive",
-    description: "Check if clearing the input removes the preview content",
-    expectedResult: "Iframe should render a blank or empty page",
-    priority: "low",
+    description: "Verify that valid payment data shows a success modal",
+    expectedResult: "Payment success dialog appears with entered card details",
+    priority: "high",
     steps: [
-      "Navigate to the HTML editor component",
-      "Clear all content from the editor",
-      "Verify the preview area becomes blank"
+      "Enter '4242424242424242' in card number field",
+      "Enter '12/25' in expiry field",
+      "Enter '123' in CVV field",
+      "Click 'Pay Now'",
+      "Verify modal window appears showing the card number, expiry, and CVV"
     ]
   },
   {
     id: "IFRAME_007",
-    scenario: "Resize browser window",
+    scenario: "Close the success modal",
     type: "positive",
-    description: "Verify that the iframe remains responsive and resizes with the layout",
-    expectedResult: "Preview pane should adapt to new dimensions without layout issues",
+    description: "Ensure the modal can be dismissed after payment success",
+    expectedResult: "Clicking 'Close' should dismiss the modal window",
     priority: "low",
     steps: [
-      "Navigate to the HTML editor component",
-      "Resize the browser window to smaller and larger widths",
-      "Ensure iframe adjusts its size responsively"
+      "Complete a successful payment flow",
+      "When the modal appears, click the 'Close' button",
+      "Verify the modal is closed and component returns to default state"
+    ]
+  }
+]
+}
+export function createLinksTestCases(): TestCase[] {
+  return [
+  {
+    id: "FOOTER_001",
+    scenario: "Verify in-page navigation link works correctly",
+    type: "positive",
+    description: "Clicking on 'In-page Navigation' should scroll to the #concept section",
+    expectedResult: "User is navigated to '/explore/links/#concept'",
+    priority: "high",
+    steps: [
+      "Render the footer component",
+      "Click on the 'In-page Navigation' link",
+      "Verify the URL changes to include '#concept'",
+      "Ensure the corresponding section is visible in the viewport"
+    ]
+  },
+  {
+    id: "FOOTER_002",
+    scenario: "External link opens in a new tab",
+    type: "positive",
+    description: "Clicking on 'External Navigation (New Tab)' should open /explore/button in a new tab",
+    expectedResult: "Link opens the correct page in a new browser tab",
+    priority: "medium",
+    steps: [
+      "Click on 'External Navigation (New Tab)' link",
+      "Check if a new tab is opened",
+      "Verify the URL is '/explore/button'"
+    ]
+  },
+  {
+    id: "FOOTER_003",
+    scenario: "External link opens in a new window",
+    type: "positive",
+    description: "Clicking 'External Navigation (New Window)' button opens /explore/slider in a new window",
+    expectedResult: "New window is launched with '/explore/slider' page",
+    priority: "medium",
+    steps: [
+      "Click on the 'External Navigation (New Window)' button",
+      "Confirm a new browser window opens",
+      "Validate the new window URL is '/explore/slider'"
+    ]
+  },
+  {
+    id: "FOOTER_004",
+    scenario: "Clicking broken link leads to error page",
+    type: "negative",
+    description: "Broken link should route to a 404 or appropriate error page",
+    expectedResult: "User sees a 404 or custom error message",
+    priority: "low",
+    steps: [
+      "Click on the 'Broken Link'",
+      "Check if 404 page or custom error message is shown"
+    ]
+  },
+  {
+    id: "FOOTER_005",
+    scenario: "Contact Us link opens default mail client",
+    type: "positive",
+    description: "Clicking on 'Contact Us' opens user's default email app",
+    expectedResult: "Mail client opens with 'mailto:cnaarios@gmail.com'",
+    priority: "medium",
+    steps: [
+      "Click on the 'Contact Us' link",
+      "Ensure user's default mail app opens",
+      "Validate email address is pre-filled as 'cnaarios@gmail.com'"
+    ]
+  },
+  {
+    id: "FOOTER_006",
+    scenario: "YouTube link opens in a new tab",
+    type: "positive",
+    description: "Clicking 'Follow Us on YouTube' should open the YouTube channel",
+    expectedResult: "YouTube channel opens in a new browser tab",
+    priority: "medium",
+    steps: [
+      "Click on 'Follow Us on YouTube'",
+      "Verify a new tab opens",
+      "Ensure it loads the correct YouTube URL"
+    ]
+  },
+  {
+    id: "FOOTER_007",
+    scenario: "Site name 'Cnarios' is clickable and navigates to homepage",
+    type: "positive",
+    description: "Clicking on 'Cnarios' in the footer should route to '/'",
+    expectedResult: "User is navigated to homepage",
+    priority: "high",
+    steps: [
+      "Click on 'Cnarios' link in footer",
+      "Verify the URL changes to '/'",
+      "Ensure homepage is rendered"
+    ]
+  }
+]
+
+}
+
+export function createFileUploadTestcases(): TestCase[] {
+  return [
+  {
+    id: "FILEUPLOAD_001",
+    scenario: "Upload and preview valid TXT file",
+    type: "positive",
+    description: "Ensure that uploading a valid .txt file displays its content in the UI",
+    expectedResult: "Content of the uploaded file is correctly shown on the screen",
+    priority: "high",
+    steps: [
+      "Navigate to the file upload section",
+      "Click on the 'Choose File' button",
+      "Select a valid .txt file with known content",
+      "Verify that the preview displays the exact content from the file"
+    ]
+  },
+  {
+    id: "FILEUPLOAD_002",
+    scenario: "Reject unsupported file types",
+    type: "negative",
+    description: "Ensure that non-.txt files cannot be uploaded",
+    expectedResult: "File input shows an error or prevents file selection for unsupported formats",
+    priority: "medium",
+    steps: [
+      "Navigate to the file upload section",
+      "Click on the 'Choose File' button",
+      "Attempt to select a .jpg or .pdf file",
+      "Verify that upload is rejected or no preview is shown"
+    ]
+  },
+  {
+    id: "FILEUPLOAD_003",
+    scenario: "Show message for empty TXT file",
+    type: "negative",
+    description: "Verify appropriate message is shown when an empty file is uploaded",
+    expectedResult: "UI displays 'File is empty' or equivalent message",
+    priority: "medium",
+    steps: [
+      "Navigate to the file upload section",
+      "Upload an empty .txt file",
+      "Verify the UI shows appropriate error or empty state message"
+    ]
+  }
+]
+
+}
+
+export function createWaitTestCases(): TestCase[] {
+  return [
+  {
+    id: "WAITS_001",
+    scenario: "Add item to cart and verify toast message",
+    type: "positive",
+    description: "Verify user can click add to cart and see a toast after network delay",
+    expectedResult: "Toast notification appears confirming item addition",
+    priority: "high",
+    steps: [
+      "Navigate to product card",
+      "Click on 'Add to Cart' button",
+      "Wait explicitly for the toast notification to appear",
+      "Validate toast message text",
+      "Dismiss toast and verify it disappears"
+    ]
+  },
+  {
+    id: "WAITS_002",
+    scenario: "Toast auto-dismisses after timeout",
+    type: "positive",
+    description: "Ensure the toast disappears automatically after a set duration",
+    expectedResult: "Toast auto-closes in 4 seconds",
+    priority: "medium",
+    steps: [
+      "Click on 'Add to Cart'",
+      "Wait for toast to appear",
+      "Wait implicitly for it to dismiss",
+      "Ensure it is no longer visible"
+    ]
+  }
+]
+
+}
+
+export function createMultiWindowTestCases(): TestCase[] {
+  return [
+  {
+    id: "QUICKLINKS_001",
+    scenario: "Open link in new tab",
+    type: "positive",
+    description: "Ensure clicking the button link opens in a new browser tab",
+    expectedResult: "New tab is opened with correct content",
+    priority: "high",
+    steps: [
+      "Click on 'Learn about Button' link",
+      "Verify a new tab opens",
+      "Check the URL is '/explore/button'",
+      "Assert that the button content is rendered"
+    ]
+  },
+  {
+    id: "QUICKLINKS_002",
+    scenario: "Open link in new window",
+    type: "positive",
+    description: "Check window popup opens for time picker link",
+    expectedResult: "New window with correct dimensions opens and renders content",
+    priority: "medium",
+    steps: [
+      "Click on 'Learn about Time Picker'",
+      "Verify window opens with 800x600 size",
+      "Assert that Time Picker component is loaded"
+    ]
+  },
+  {
+    id: "QUICKLINKS_003",
+    scenario: "Broken or missing navigation",
+    type: "negative",
+    description: "Handle missing or broken links gracefully",
+    expectedResult: "User is redirected to a 404 page or shown an error message",
+    priority: "low",
+    steps: [
+      "Click on a non-existent link like '/explore/xyz'",
+      "Verify it shows a proper 404 message"
+    ]
+  },
+];
+}
+
+export function createSliderTestCases(): TestCase[] {
+  return [
+  { 
+    id: "SLIDER_001",
+    scenario: "Submit a valid rating using the slider",
+    type: "positive",
+    description: "Ensure that moving the slider and submitting updates the average and shows the user’s rating",
+    expectedResult: "Average rating updates correctly and user’s rating is displayed",
+    priority: "high",
+    steps: [
+      "Navigate to the rating page",
+      "Drag the slider to value '8'",
+      "Click on 'Submit Rating' button",
+      "Verify that average rating updates",
+      "Verify that the user's rating is displayed"
+    ]
+  },
+  {
+    id: "SLIDER_002",
+    scenario: "Prevent rating submission without slider interaction",
+    type: "negative",
+    description: "Ensure that clicking 'Submit' without moving the slider doesn’t update the average",
+    expectedResult: "Rating is not accepted and a message prompts user to provide a rating",
+    priority: "medium",
+    steps: [
+      "Navigate to the rating page",
+      "Click on 'Submit Rating' button without interacting with the slider",
+      "Verify that an error or message is shown",
+      "Ensure that the average rating remains unchanged"
+    ]
+  },
+  {
+    id: "SLIDER_003",
+    scenario: "Display user review below slider after submission",
+    type: "positive",
+    description: "Ensure that after submitting a rating and review, the review is displayed",
+    expectedResult: "Review text entered by user is displayed clearly below the slider",
+    priority: "medium",
+    steps: [
+      "Navigate to the rating page",
+      "Drag the slider to value '9'",
+      "Enter review text like 'Great product!'",
+      "Click on 'Submit Rating' button",
+      "Verify that review text is shown on the UI"
+    ]
+  },
+  {
+    id: "SLIDER_004",
+    scenario: "Prevent duplicate submissions",
+    type: "negative",
+    description: "Ensure user cannot submit multiple ratings",
+    expectedResult: "After first submission, the slider is disabled or button is hidden",
+    priority: "low",
+    steps: [
+      "Navigate to the rating page",
+      "Provide a rating using slider and submit",
+      "Attempt to rate again",
+      "Verify that second submission is not allowed"
+    ]
+  },
+  {
+    id: "SLIDER_005",
+    scenario: "Ensure slider accepts only values within range",
+    type: "negative",
+    description: "Slider should not allow values outside 1–10 range",
+    expectedResult: "Slider input is clamped between 1 and 10",
+    priority: "high",
+    steps: [
+      "Navigate to the rating page",
+      "Try to set slider value below 1 or above 10 via dev tools or JS",
+      "Verify that slider resets to min/max limit and UI reflects it"
     ]
   }
 ]

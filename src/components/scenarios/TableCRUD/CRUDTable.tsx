@@ -144,7 +144,7 @@ export default function EmployeeTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {sortedData.map((emp) => (
+            {sortedData.length === 0? <div className="p-8">No data found</div>:sortedData.map((emp) => (
               <TableRow key={emp.id}>
                 <TableCell>{emp.name}</TableCell>
                 <TableCell>{emp.position}</TableCell>

@@ -9,6 +9,7 @@ import ConceptOutlinePage from './pages/ConceptPage/ConceptPage';
 import ChallengesPage from './pages/challenges/ChallengesPage';
 import BlogPage from './components/blogs/pages/BlogPage';
 import Blogs from './components/blogs/pages/Blogs';
+import NotFound from './pages/NotFound';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             {/* <Route path="/challenge/:challengeId" element={<ChallengePage />} /> */}
             <Route path="/blogs" element={<Blogs />} />
 <Route path="/blog/:slug" element={<BlogPage />} />
+<Route path='*' element={<NotFound />}/>
 
       </Routes>
     </>

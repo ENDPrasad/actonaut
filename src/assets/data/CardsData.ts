@@ -61,14 +61,14 @@ export const automationTopics: AutomationTopic[] = [
   path: "/explore/timepicker",
   category: "Input"
 },
-{
-  id: "notificationpermission",
-  title: "Notification Permission",
-  aliases: ["Browser Notification", "Push Permission", "Notification Prompt", "Allow Notifications"],
-  description: "Automate handling browser notification permission prompts and validating user responses during tests.",
-  path: "/explore/notificationpermission",
-  category: "Browser APIs"
-},
+// {
+//   id: "notificationpermission",
+//   title: "Notification Permission",
+//   aliases: ["Browser Notification", "Push Permission", "Notification Prompt", "Allow Notifications"],
+//   description: "Automate handling browser notification permission prompts and validating user responses during tests.",
+//   path: "/explore/notificationpermission",
+//   category: "Browser APIs"
+// },
   {
     id: "alert",
     title: "Alert & Prompt",
@@ -117,14 +117,14 @@ export const automationTopics: AutomationTopic[] = [
     path: "/explore/keyboard",
     category: "Event"
   },
-  {
-    id: "navigation",
-    title: "Navigation",
-    aliases: ["Page Load", "Redirect", "Back", "Forward", "Multi-tab"],
-    description: "Test page transitions, redirects, and browser navigation behaviors.",
-    path: "/explore/navigation",
-    category: "Navigation"
-  },
+  // {
+  //   id: "navigation",
+  //   title: "Navigation",
+  //   aliases: ["Page Load", "Redirect", "Back", "Forward", "Multi-tab"],
+  //   description: "Test page transitions, redirects, and browser navigation behaviors.",
+  //   path: "/explore/navigation",
+  //   category: "Navigation"
+  // },
   {
   id: "table",
   title: "Table",
@@ -170,7 +170,7 @@ export const automationTopics: AutomationTopic[] = [
     title: "File Upload",
     aliases: ["Choose File", "Browse", "Upload"],
     description: "Practice file uploads with local files and validation steps.",
-    path: "/explore/file-upload",
+    path: "/explore/fileupload",
     category: "Input"
   },
   {
