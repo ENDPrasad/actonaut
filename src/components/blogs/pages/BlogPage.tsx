@@ -25,7 +25,10 @@ const BlogPage = () => {
       <Typography variant="h4" className="mb-2">{blog.title}</Typography>
       <Typography variant="subtitle1" color="textSecondary" className="mb-6">{blog.category}</Typography>
       {blog.content.map((item: BlogContent, idx: number) => {
-        if (item.type === "paragraph") {
+        if(item.type === 'header'){
+          return <Typography key={idx} className="mb-4" variant="subtitle1">{item.text}</Typography>;
+        }
+        else if (item.type === "paragraph") {
           return <Typography key={idx} className="mb-4" variant="body1">{item.text}</Typography>;
         } else if (item.type === "image") {
           return <div className="max-w-3xl mx-auto">
