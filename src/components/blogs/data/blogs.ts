@@ -3,14 +3,14 @@ import canriosSVG from '../../../assets/read-illustration.svg'
 
 export const blogData: Blog[] = [
   {
-    title: "Understanding React Portals",
-    slug: "react-portals",
-    category: "React",
-    description: "Learn how portals help you render elements outside the DOM hierarchy.",
+    title: "HTML for Automation Engineers: What You Really Need to Know",
+    slug: "html-basics",
+    category: "HTML Basics",
+    description: "All you need to know about HTML before writing automation scripts",
     content: [
       {
-        type: "paragraph",
-        text: "React portals allow you to render children into a DOM node that exists outside the DOM hierarchy."
+        type: "header",
+        text: "What is HTML?"
       },
       {
         type: "image",

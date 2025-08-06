@@ -113,7 +113,7 @@ export interface Blog {
   content: BlogContent[];
 }
 
-export type BlogContent = ParagraphContent | ImageContent;
+export type BlogContent = ParagraphContent | ImageContent | IHeaderContent;
 
 interface ParagraphContent {
   type: 'paragraph';
@@ -124,4 +124,9 @@ interface ImageContent {
   type: 'image';
   src: string;
   alt: string;
+}
+
+interface IHeaderContent {
+  type: 'header';
+  text: string;
 }
