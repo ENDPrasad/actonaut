@@ -65,7 +65,7 @@ export default function NavBar() {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: theme.palette.primary.main, fontWeight: '600' }}
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, color: theme.palette.primary.main, fontWeight: '600' }}
           >
                     <Link to={'/'} smooth onClick={scrollToTop}>
                     <img width={'150px'} src='/cnarios.svg' alt='cnarios logo'/>
