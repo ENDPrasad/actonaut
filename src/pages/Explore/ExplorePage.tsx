@@ -1,17 +1,17 @@
-import ChallengesSection from "../../components/challenges/ChallengesSection"
 import Footer from "../../components/Footer/Footer"
 import NavBar from "../../components/NavBar/NavBar"
+import Explore from "./Explore"
 
-function ChallengesPage() {
+function ExplorePage() {
 
   return (
     <div>
       <NavBar />
-      <ChallengesSection />
+      <Explore />
       
       <Footer />
     </div>
   )
 }
 
-export default ChallengesPage
+export default ExplorePage

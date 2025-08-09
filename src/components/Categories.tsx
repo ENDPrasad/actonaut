@@ -12,7 +12,7 @@ function Categories() {
     <>
       <Box className="flex flex-col w-full">
         <div className="py-8 px-16">
-          <Link to='/'>
+          <Link to='/explore'>
           <ArrowBackIcon sx={{color: PRIMARY_COLOR}} />
         </Link>
         </div>

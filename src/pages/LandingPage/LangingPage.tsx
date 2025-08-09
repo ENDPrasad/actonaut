@@ -1,5 +1,5 @@
 // import ContactUs from '../../components/ContactUs/ContactUs';
-import ContactUsV2 from '../../components/ContactUs/ContactUsV2';
+// import ContactUsV2 from '../../components/ContactUs/ContactUsV2';
 import FeaturesSection from '../../components/FeaturesSection';
 import Footer from '../../components/Footer/Footer';
 // import HeroSection from '../../components/HeroSection/HeroSection';
@@ -15,7 +15,7 @@ function LandingPage() {
         <HeroSectionV2 />
         <FeaturesSection />
         <HowItWorks />
-        <ContactUsV2 />
+        {/* <ContactUsV2 /> */}
         <Footer />
         </div>
   )

@@ -10,7 +10,7 @@ function HeroSectionV2() {
   return (
       <Box id='hero-section' component="main" className='w-full hero-section py-10' style={{height: 'calc(100dvh - 6rem)'}} sx={{backgroundColor: BACKGROUND_GRADIENT}}>
         <div className='h-full flex align-middle justify-center'>
-            <div className='flex-1 mx-24 flex flex-col justify-center align-center'>
+            <div className='flex-1 ml-24 mr-8 flex flex-col justify-center align-center'>
                 <div className='flex flex-col gap-3 justify-center align-middle leading-1'>
             <HeaderText text='
 Practice Automation Testing the Way It Happens in the Real World'/>
@@ -24,7 +24,7 @@ Practice Automation Testing the Way It Happens in the Real World'/>
         </div>
             </div>
 
-            <div className='flex-1 flex align-middle'>
+            <div className='flex-1 flex align-start px-2'>
                <img src={herosSectionSVG} alt="Automation Illustration" />
             </div>
           

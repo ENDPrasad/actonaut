@@ -9,19 +9,19 @@ import {
 import CustomInputV2 from "./CustomInputV2";
 import CustomTextAreaV2 from "./CustomTextAreaV2";
 
-
 // 👇 Extend global types
 declare global {
   interface Window {
     grecaptcha: ReCAPTCHA;
-    recaptchaWidgetId: number;
+    recaptchaWidgetId?: number;
   }
 
   interface ReCAPTCHA {
     ready(callback: () => void): void;
     render(container: HTMLElement, options: ReCAPTCHARenderOptions): number;
-    execute(widgetId: number): void;
-    reset(widgetId: number): void;
+    execute(widgetId?: number): void;
+    reset(widgetId?: number): void;
+    getResponse(widgetId?: number): string;
   }
 
   interface ReCAPTCHARenderOptions {
@@ -45,24 +45,27 @@ function ContactUsV2() {
   const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
   const [recaptchaReady, setRecaptchaReady] = useState(false);
 
-  // 👇 Load reCAPTCHA script
+  // 👇 Load reCAPTCHA script only once
   useEffect(() => {
+    if (document.getElementById("recaptcha-script")) return; // ✅ Prevent loading twice
+
     const script = document.createElement("script");
+    script.id = "recaptcha-script";
     script.src = "https://www.google.com/recaptcha/api.js?render=explicit";
     script.async = true;
     script.defer = true;
     script.onload = () => {
       if (window.grecaptcha) {
         window.grecaptcha.ready(() => {
-          if (recaptchaRef.current) {
-            const id = window.grecaptcha.render(recaptchaRef.current, {
+          if (recaptchaRef.current && window.recaptchaWidgetId === undefined) {
+            // ✅ Only render if it hasn't been rendered before
+            window.recaptchaWidgetId = window.grecaptcha.render(recaptchaRef.current, {
               sitekey: import.meta.env.VITE_RECAPTCHA_SITE_KEY,
               size: "invisible",
               callback: handleRecaptchaSuccess,
             });
-            window.recaptchaWidgetId = id;
-            setRecaptchaReady(true);
           }
+          setRecaptchaReady(true);
         });
       }
     };
@@ -77,12 +80,10 @@ function ContactUsV2() {
     }));
   };
 
-  // 👇 When reCAPTCHA succeeds
   const handleRecaptchaSuccess = (token: string) => {
     sendEmail(token);
   };
 
-  // 👇 Executed on submit
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { Name, Email, Message } = formValues;
@@ -92,7 +93,7 @@ function ContactUsV2() {
       return;
     }
 
-    if (recaptchaReady) {
+    if (recaptchaReady && window.recaptchaWidgetId !== undefined) {
       window.grecaptcha.execute(window.recaptchaWidgetId);
     } else {
       setFeedback({ type: "error", message: "reCAPTCHA not ready. Try again later." });
@@ -118,20 +119,20 @@ function ContactUsV2() {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
-        (result) => {
-          console.log("Email sent!", result.text);
+        () => {
           setFeedback({ type: "success", message: "Message sent successfully!" });
           setFormValues({ Name: "", Email: "", Message: "" });
           formRef.current?.reset();
         },
-        (error) => {
-          console.error("Send error:", error.text);
+        () => {
           setFeedback({ type: "error", message: "Failed to send message. Please try again." });
         }
       )
       .finally(() => {
         setLoading(false);
-        window.grecaptcha.reset(window.recaptchaWidgetId); // Reset reCAPTCHA
+        if (window.recaptchaWidgetId !== undefined) {
+          window.grecaptcha.reset(window.recaptchaWidgetId);
+        }
       });
   };
 
@@ -147,15 +148,12 @@ function ContactUsV2() {
       <SubHeader text="Share. Suggest. Shape." />
 
       <div className="flex flex-col md:flex-row px-4 md:px-32 py-12 gap-8">
-        {/* Left Info */}
         <div className="flex-1 text-sm">
           <p>
-            Whether it's a broken flow, a cool suggestion, or your favorite interview challenge —
-            we're all ears.
+            Whether it's a broken flow, a cool suggestion, or your favorite interview challenge — we're all ears.
           </p>
         </div>
 
-        {/* Right Form */}
         <form ref={formRef} onSubmit={handleFormSubmit} className="flex-1 flex flex-col gap-4">
           {feedback && (
             <Alert severity={feedback.type} onClose={() => setFeedback(null)}>
@@ -163,36 +161,21 @@ function ContactUsV2() {
             </Alert>
           )}
 
-          <CustomInputV2
-            label="Name"
-            name="Name"
-            value={formValues.Name}
-            onChange={handleChange}
-          />
-          <CustomInputV2
-            label="Email"
-            name="Email"
-            type="email"
-            value={formValues.Email}
-            onChange={handleChange}
-          />
-          <CustomTextAreaV2
-            name="Message"
-            value={formValues.Message}
-            onChange={handleChange}
-          />
+          <CustomInputV2 label="Name" name="Name" value={formValues.Name} onChange={handleChange} />
+          <CustomInputV2 label="Email" name="Email" type="email" value={formValues.Email} onChange={handleChange} />
+          <CustomTextAreaV2 name="Message" value={formValues.Message} onChange={handleChange} />
 
-                    <p className="text-sm text-white-500 mt-4">
-  This site is protected by reCAPTCHA and the Google{' '}
-  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">
-    Privacy Policy
-  </a>{' '}
-  and{' '}
-  <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline">
-    Terms of Service
-  </a>{' '}
-  apply.
-</p>
+          <p className="text-sm text-white-500 mt-4">
+            This site is protected by reCAPTCHA and the Google{" "}
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">
+              Privacy Policy
+            </a>{" "}
+            and{" "}
+            <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline">
+              Terms of Service
+            </a>{" "}
+            apply.
+          </p>
 
           <div className="flex justify-start">
             <Button
@@ -222,7 +205,6 @@ function ContactUsV2() {
 
           {/* Invisible reCAPTCHA container */}
           <div ref={recaptchaRef} className="hidden" />
-
         </form>
       </div>
     </div>

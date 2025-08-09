@@ -31,7 +31,7 @@ export function createConceptPageData(
 //   const solutions = conceptName === "button" ? createButtonSolutions() : createFormSolutions()
 
   return {
-    breadcrumbs: [{ label: "explore", href: "/explore" }, { label: conceptName }],
+    breadcrumbs: [{ label: "concepts", href: "/concepts" }, { label: conceptName }],
     tabs: [
         {
             id: "concept",

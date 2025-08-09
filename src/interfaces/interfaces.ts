@@ -71,20 +71,18 @@ export interface InteractiveElement {
 }
 
 // Challenge system interfaces
-export interface Challenge {
-  id: string
-  title: string
-  description: string
-  difficulty: "easy" | "medium" | "hard" | "expert"
-  category: string
-  tags: string[]
-  estimatedTime: string
-  points: number
-  prerequisites?: string[]
-  scenario: React.ReactNode
-  objectives: string[]
-  hints?: string[]
-}
+// export interface Challenge {
+//   id: string
+//   title: string
+//   description: string
+//   difficulty: "easy" | "medium" | "hard" | "expert"
+//   category: string
+//   tags: string[]
+//   prerequisites?: string[]
+//   scenario: React.ReactNode
+//   objectives: string[]
+//   hints?: string[]
+// }
 
 export interface ChallengeFilters {
   difficulty: string
@@ -129,4 +127,62 @@ interface ImageContent {
 interface IHeaderContent {
   type: 'header';
   text: string;
+}
+
+export type Product = {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  rating: number;
+  inStock: boolean;
+};
+
+
+// Challenge system interfaces
+export interface Challenge {
+  id: string
+  title: string
+  description: string
+  difficulty: "easy" | "medium" | "hard" | "expert"
+  category: string
+  tags: string[]
+  prerequisites?: string[]
+  scenario: React.ReactNode
+  objectives?: string[]
+  hints?: string[]
+}
+
+export interface ChallengeFilters {
+  difficulty: string
+  category: string
+  search: string
+}
+
+
+// New Challenge Page Data interface
+export interface ChallengePageData {
+  breadcrumbs: BreadcrumbItem[]
+  challenge: Challenge
+  tabs: TabItem[]
+  activeTab?: string
+}
+
+// Challenge content interface
+export interface ChallengeContent {
+  id: string
+  title: string
+  description: string
+  difficulty: "easy" | "medium" | "hard" | "expert"
+  category: string
+  tags: string[]
+  prerequisites?: string[]
+  objectives?: string[]
+  hints?: string[]
+  scenario: React.ReactNode
+  backgroundInfo?: string
+  requirements?: string[]
+  acceptanceCriteria: string[]
+  testCases: TestCase[]
+  solutions?: SolutionCode[]
 }
