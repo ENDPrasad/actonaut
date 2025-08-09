@@ -3,10 +3,14 @@ import BlogFactory from "../BlogFactory";
 import { Box, Typography } from "@mui/material";
 import { PRIMARY_COLOR } from "../../../helper/contants";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import NavBar from "../../NavBar/NavBar";
+import Footer from "../../Footer/Footer";
 
 
 function Blogs() {
   return (
+    <>
+    <NavBar />
     <Box className="p-8">
       <Typography variant="h4" gutterBottom>Our Blogs</Typography>
       <div className="px-8">
@@ -18,6 +22,8 @@ function Blogs() {
         <BlogFactory />
       </div>
     </Box>
+    <Footer />
+    </>
   );
 }
 
