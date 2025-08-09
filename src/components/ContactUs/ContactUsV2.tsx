@@ -70,6 +70,7 @@ function ContactUsV2() {
       }
     };
     document.body.appendChild(script);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

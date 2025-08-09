@@ -1,4 +1,3 @@
-// src/components/ProductPagination.tsx
 import React, { useState } from "react";
 import type { Product } from "./ProductsData";
 import { Card, CardContent, Typography, Rating, Button, Pagination } from "@mui/material";
