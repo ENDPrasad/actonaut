@@ -176,7 +176,7 @@ export default function ChallengesSection() {
             <CardActions>
               <Button
                 component={RouterLink}
-                to={`/challenge-detail/${challenge.id}`}
+                to={`/challenges/${challenge.id}`}
                 variant="contained"
                 fullWidth
                 size="small"

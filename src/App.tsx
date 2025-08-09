@@ -31,10 +31,10 @@ function App() {
         />
         {/* <Route path="/challenges" element={<ChallengesPage />} /> */}
         <Route path="/challenges" element={<ChallengesPage />} />
-            <Route path="/challenge-detail/:challengeId" element={<ChallengeDetailPage />} />
+            <Route path="/challenges/:challengeId" element={<ChallengeDetailPage />} />
         {/* <Route path="/challenge/:challengeId" element={<ChallengePage />} /> */}
         <Route path="/blogs" element={<Blogs />} />
-        <Route path="/blog/:slug" element={<BlogPage />} />
+        <Route path="/blogs/:slug" element={<BlogPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
